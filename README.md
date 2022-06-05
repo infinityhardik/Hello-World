@@ -1,3 +1,7 @@
+## Hardik Bhaavani
+
+This is a Repository for all the Coding Files which I have been practicing on while attending Full Stack Development Course from Upgrad.
+
 ## Getting Started
 
 Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
