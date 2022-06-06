@@ -1,5 +1,5 @@
 /* Implements a Stack using a Single Queue , i.e., Queue acts like a Stack */
-package FSD_Main;
+package Stacks_Queues;
 
 import java.util.LinkedList;
 import java.util.Queue;

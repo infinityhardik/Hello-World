@@ -1,6 +1,6 @@
 // Complete Program for Parentheses Matching.
 
-package FSD_Main;
+package Stacks_Queues;
 import java.util.Stack;
 import java.util.EmptyStackException;
 

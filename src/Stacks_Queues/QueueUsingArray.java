@@ -10,7 +10,7 @@ But Left End has a O(n) T(n) in Arrays.
 
 Queue is created by moving from Left >> Right side of Array.
 */
-package FSD_Main;
+package Stacks_Queues;
 import java.util.Scanner;
 
 public class QueueUsingArray {

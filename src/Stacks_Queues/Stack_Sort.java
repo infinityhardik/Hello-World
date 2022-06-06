@@ -1,4 +1,4 @@
-package FSD_Main;
+package Stacks_Queues;
 
 import java.util.Scanner;
 import java.util.Stack;

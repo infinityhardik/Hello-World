@@ -1,7 +1,7 @@
 /* 
 Stack Implementation using Java Linked List Library from Upgrad Platform 
 */
-package FSD_Main;
+package Stacks_Queues;
 
 import java.util.EmptyStackException;
 import java.util.LinkedList;

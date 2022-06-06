@@ -14,7 +14,7 @@ Overflow is not possible in Linked List because it is Dynamic in Nature and can 
 the current program.
 Only Underflow is possible because queue can be empty.
 */
-package FSD_Main;
+package Stacks_Queues;
 import java.util.Scanner;
 
 public class QueueUsingLL{
