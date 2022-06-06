@@ -10,7 +10,7 @@ public class Palindrome_Queue {
         System.out.print("Enter any string:");
         Scanner in = new Scanner(System.in);
         String inputString = in.nextLine();
-        Queue queue = new LinkedList();
+        Queue<Character> queue = new LinkedList<>();
         
         for (int i = inputString.length()-1; i >=0; i--) {
             queue.add(inputString.charAt(i));
@@ -25,6 +25,8 @@ public class Palindrome_Queue {
         System.out.println("The input String is a palindrome.");
         else
         System.out.println("The input String is not a palindrome.");
+
+        in.close();
     }
 }
 

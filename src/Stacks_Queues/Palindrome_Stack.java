@@ -25,6 +25,8 @@ public class Palindrome_Stack {
         System.out.println("The input String is a palindrome.");
         else
         System.out.println("The input String is not a palindrome.");
+
+        in.close();
     }
 }
 
