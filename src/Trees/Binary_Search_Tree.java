@@ -1,11 +1,9 @@
 package Trees;
 
 public class Binary_Search_Tree {
-    
     static class TreeNode {
         TreeNode left, right; 
         int data;
-        
         TreeNode(int data) {
             this.data = data;
         }
@@ -15,7 +13,7 @@ public class Binary_Search_Tree {
         if(root == null) {
             return new TreeNode(data);
         }
-        
+
         if(root.data > data) {
             root.left = recInsert(root.left, data);
         } else {
