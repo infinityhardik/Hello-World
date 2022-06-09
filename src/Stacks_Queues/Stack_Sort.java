@@ -63,12 +63,13 @@ public class Stack_Sort {
         System.out.println(temp);
     }
     
+    // Method to sort the elements of the stack in descending order from bottom to top
     static void descendingSort(Stack<Integer> stack) {
         Stack<Integer> temp = new Stack<>();
         while (!stack.isEmpty()) {
             // Remove the top element from the original stack
             int n = stack.pop();
-            // Remove the elements form temp stack which are greater than n and push into original stack
+            // Remove the elements form temp stack which are less than n and push into original stack
             while (!temp.isEmpty() && temp.peek() < n)
             stack.push(temp.pop());
             temp.push(n);
