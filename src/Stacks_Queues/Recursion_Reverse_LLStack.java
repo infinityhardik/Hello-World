@@ -93,6 +93,11 @@ public class Recursion_Reverse_LLStack {
         Scanner in = new Scanner(System.in);
         System.out.println("Enter No. of Nodes and then start entering the elements at Node : ");
         int n = in .nextInt();
+
+        if(n==0){
+            System.out.println("The Stack is Empty !");
+            System.exit(0);
+        }
         for (int i = 0; i < n; i++) {
             obj.push(in.next().charAt(0));
         }
