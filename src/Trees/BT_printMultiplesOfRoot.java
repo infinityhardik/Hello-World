@@ -55,7 +55,6 @@ public class BT_printMultiplesOfRoot {
         
         // Method to print nodes that are multiple of root node
         public void printNodes(Node node){
-            // Write your code here
             if(node==null){
                 return ;
             }
