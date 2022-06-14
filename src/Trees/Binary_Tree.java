@@ -1,5 +1,8 @@
 package Trees;
 
+import java.util.LinkedList;
+import java.util.Queue;
+
 public class Binary_Tree {
     class Node{
         Node left;
@@ -36,6 +39,27 @@ public class Binary_Tree {
         postOrderDFS(root.right);
         System.out.print(root.data +" ");
     }
+
+    // Performs Left to Right Breadth First Search
+    public void BFS(Node root){
+        if(root != null){
+            Queue<Node> q = new LinkedList<>();
+            q.add(root);
+            while (!q.isEmpty()) {
+                Node temp = q.remove(); //Creating Temp Node to avoid multiple calls to Peek Function of Queues.
+                System.out.print(temp.data+" ");
+                if(temp.left!=null){
+                    q.add(temp.left);
+                }
+                if(temp.right!=null){
+                    q.add(temp.right);
+                }                  
+            }
+            System.out.println();
+        } else {
+            System.out.println("Root is Null");
+        }
+    }
  
     public static void main(String[] args) {
         Binary_Tree t1 = new Binary_Tree();
@@ -55,5 +79,7 @@ public class Binary_Tree {
         System.out.println("Post-Order DFS Traversal");
         t1.postOrderDFS(root);
         System.out.println();
+        System.out.println("BFS Traversal");
+        t1.BFS(root);
     }
 }
