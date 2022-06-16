@@ -46,16 +46,24 @@ public class Binary_Tree {
             Queue<Node> q = new LinkedList<>();
             q.add(root);
             while (!q.isEmpty()) {
-                Node temp = q.remove(); //Creating Temp Node to avoid multiple calls to Peek Function of Queues.
+                
+                //Creating Temp Node to avoid multiple calls to Peek Function of Queues.
+                
+                Node temp = q.remove(); 
                 System.out.print(temp.data+" ");
-                if(temp.left!=null){
-                    q.add(temp.left);
-                }
-                if(temp.right!=null){
-                    q.add(temp.right);
-                }                  
+                
+                // enqueue left child into queue
+                if(temp.left!=null)
+                q.add(temp.left);
+                
+                
+                // enqueue right child into queue
+                if(temp.right!=null)
+                q.add(temp.right);
+                
             }
             System.out.println();
+            
         } else {
             System.out.println("Root is Null");
         }
@@ -79,13 +87,13 @@ public class Binary_Tree {
         int h = height(root);
         for (int i = 0; i < h; i++)
         printNodesAtLevel(root, i, 0);
-
+        
         /* 
         for (int i = 1; i <= h; i++)
         printNodesAtLevel(root, i, 1); 
         */
     }
-
+    
     // Method to print nodes at the given level
     public void printNodesAtLevel (Node root, int level, int currentLevel) {
         if (root == null)
