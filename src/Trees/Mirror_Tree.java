@@ -61,11 +61,13 @@ public class Mirror_Tree {
             if(node==null){
                 return;
             }
+            mirror(node.left);
+            mirror(node.right);
+            
+            // Swap can be made before recursion too, i.e., after If Statement 
             Node temp = node.left;
             node.left = node.right;
             node.right = temp;
-            mirror(node.left);
-            mirror(node.right);
             
             // Solved by Hardik Bhaavani
         }
