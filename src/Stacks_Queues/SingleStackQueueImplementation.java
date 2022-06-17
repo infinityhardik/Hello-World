@@ -4,6 +4,9 @@ Implements a Queue using a Single Stack , i.e., Stack acts like a Queue
 Write a program to implement the basic methods of 'queue', i.e. enqueue( ) and 
 dequeue( ) using a single stack. 
 
+The solution will perform the enqueue( ) function on the input elements and 
+print the top 3 elements after calling the ‘Dequeue’ method three times on the given elements.
+
 Constraint:  The time complexity of your code in the worst case should be O(n).
 
 
