@@ -3,17 +3,20 @@ package Trees;
 import java.util.Scanner;
 
 public class Binary_Search_Tree {
-    static class TreeNode {
-        TreeNode left, right; 
+    static class Node {
+        Node left, right; 
         int data;
-        TreeNode(int data) {
+        Node(int data) {
             this.data = data;
         }
     }
     
-    static TreeNode recInsert(TreeNode root, int data) {
+    // Whenever a new node is added to a BST, it has to be added as a leaf node. It cannot be an internal node. 
+    // Adding a Node to the BST in O(Log n) Time Complexity.
+    static Node recInsert(Node root, int data) {
         if(root == null) {
-            return new TreeNode(data);
+            return new Node(data);
+            // Equivalent to >> node = new Node(key); return node;
         }
         
         if(root.data > data) {
@@ -25,7 +28,7 @@ public class Binary_Search_Tree {
         return root;
     }
     
-    static void inorder(TreeNode root) {
+    static void inorder(Node root) {
         if(root == null) {
             return ;
         }
@@ -35,13 +38,13 @@ public class Binary_Search_Tree {
         inorder(root.right);
     }
     
-    static TreeNode insertIter(TreeNode root, int data) {
+    static Node insertIter(Node root, int data) {
         if(root == null) {
-            return new TreeNode(data);
+            return new Node(data);
         }
         
-        TreeNode prev = null;
-        TreeNode curr = root;
+        Node prev = null;
+        Node curr = root;
         
         while(curr != null) {
             if(curr.data > data) {
@@ -55,16 +58,16 @@ public class Binary_Search_Tree {
         
         
         if(prev.data > data) {
-            prev.left = new TreeNode(data);
+            prev.left = new Node(data);
         } else {
-            prev.right = new TreeNode(data);
+            prev.right = new Node(data);
         }
         
         return root;
     }
     
     // Method to search for a node with given key in a BST
-    static boolean search(TreeNode node, int key) {
+    static boolean search(Node node, int key) {
         if (node == null)
         return false;
         
@@ -82,7 +85,7 @@ public class Binary_Search_Tree {
         // root = insertIter(root, arr[i]);
         
         Scanner in = new Scanner(System.in);
-        TreeNode root = null;
+        Node root = null;
         System.out.println("Enter No. of Elements to be inserted in BST :");
         int n = in.nextInt();
         for(int i =0; i < n; i++) {
