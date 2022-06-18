@@ -56,7 +56,6 @@ public class Binary_Search_Tree {
             }
         }
         
-        
         if(prev.data > data) {
             prev.left = new Node(data);
         } else {
@@ -79,6 +78,53 @@ public class Binary_Search_Tree {
         else
         return search(node.right, key);
     }
+    
+    // A recursive function to delete an existing key in BST
+    static Node deleteRec(Node root, int data)
+    {
+        // Base Case: If the tree is empty
+        if (root == null){
+            return root;
+        }
+        
+        // Otherwise, recur down the tree
+        if (data < root.data){
+            root.left = deleteRec(root.left, data);
+        } else if (data > root.data){ 
+            root.right = deleteRec(root.right, data);
+        } else {
+            // if key is same as root's key, then this is the node to be deleted
+            
+            // node with only one child or no child
+            if (root.left == null){
+                return root.right;
+            } else if (root.right == null){
+                return root.left;
+            }
+            
+            
+            // node with two children : Get the Inorder Successor (smallest in the right subtree)
+            root.data = minValue(root.right);
+            
+            // Delete the inorder successor
+            root.right = deleteRec(root.right, root.data);
+        }
+        
+        return root;
+    }
+    
+    // Getting the Inorder Successor (Smallest Value in the right subtree)
+    static int minValue(Node root)
+    {
+        int minv = root.data;
+        while (root.left != null)
+        {
+            minv = root.left.data;
+            root = root.left;
+        }
+        return minv;
+    }
+    
     public static void main(String args[]) {
         // int arr[] = {10, 30, 50, 5, 15, 3};
         // root = recInsert(root, arr[i]);
@@ -96,6 +142,12 @@ public class Binary_Search_Tree {
         System.out.println("Enter a Search Key : ");
         int key = in.nextInt();
         System.out.println(search(root, key));
+        
+        System.out.println("Enter a Deletion Element : ");
+        int del = in.nextInt();
+        deleteRec(root, del);
+        inorder(root);
+        
         in.close();
     }
 }
