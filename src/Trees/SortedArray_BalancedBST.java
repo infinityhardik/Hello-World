@@ -3,7 +3,7 @@ Create a Balanced BST with a given sorted array in order to have logarithmic per
 */
 package Trees;
 
-public class BalancedBST{
+public class SortedArray_BalancedBST{
     static class Node {
         int data;
         Node left, right;
