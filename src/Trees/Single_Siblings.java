@@ -1,44 +1,41 @@
-//Function to Count No. of Leaf Nodes in BST. A node is a leaf node if its both left and right child nodes are NULL.
+/*
+//Function to print nodes that dont have a Sibling. A sibling is a node that has the same parent.
 // Solved by Hardik Bhaavani
-/* 
-Sample Input:
-7
-20 8 4 22 12 10 14
-Sample Output:
-4
-
 Sample Input:
 6
-3 4 2 5 7 1
+5 2 8 1 4 3
 Sample Output:
-2
+3
+
+Sample Input:
+7
+22 1 45 27 19 41 3
+Sample Output:
+19 3 27 41 
 */
 package Trees;
 import java.util.Scanner;
 
-public class LeafNodes {
-    static class Node  
-    { 
+public class Single_Siblings {
+    
+    static class Node { 
         int data; 
         Node left, right; 
         
-        public Node(int item)  
-        { 
-            data = item; 
+        Node(int value) { 
+            data = value; 
             left = right = null; 
         } 
     } 
     
-    static class BinaryTree  
-    { 
-        static Node root; 
+    static class BinaryTree { 
+        static Node root;
         
         BinaryTree() {
             root = null;
         }
         
-        // Function to insert in the BST 
-        static void insert(int key) { 
+        void insert(int key) { 
             root = insertRec(root, key); 
         } 
         
@@ -56,26 +53,26 @@ public class LeafNodes {
             root.right = insertRec(root.right, key); 
             
             return root; 
-        } 
+        }  
         
-        static int getLeafCount()  
-        { 
-            return getLeafCount(root); 
-        } 
-        
-        static int getLeafCount(Node node)  
-        { 
-            if(node==null)
-            return 0;
+        //Function to print nodes that dont have a sibling 
+        static void printSingles(Node node) { 
+            if(node==null){
+                return;
+            }
+            if(node.left!=null && node.right==null){
+                System.out.print(node.left.data+ " ");
+            } else if(node.right!=null && node.left==null){
+                System.out.print(node.right.data+ " ");
+            }
             
-            if(node.left==null && node.right==null) 
-            return 1;
+            printSingles(node.left);
+            printSingles(node.right);
             
-            return getLeafCount(node.left) + getLeafCount(node.right);
-        } 
+        }
         
-        public static void main(String[] args)  
-        { 
+        public static void main(String args[]) { 
+            BinaryTree tree = new BinaryTree(); 
             
             Scanner sc = new Scanner(System.in);
             int size;	
@@ -89,11 +86,11 @@ public class LeafNodes {
                 int[] elementsArr = new int[size];
                 for(int i = 0; i < size; i++){
                     elementsArr[i] = sc.nextInt();
-                    insert(elementsArr[i]);
+                    tree.insert(elementsArr[i]);
                 }
-                System.out.println("No. of Leaf Nodes in Tree : "+getLeafCount());
+                printSingles(root); 
             }
             sc.close();
-        } 
+        }    
     }
 }
