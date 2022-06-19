@@ -79,7 +79,7 @@ public class MaxHeight_BT {
                 
                 tree.root = tree.insertNode(elementsArr, tree.root, 0);
                 
-                System.out.println(tree.findHeight(tree.root));
+                System.out.println("Max Height of Tree : "+tree.findHeight(tree.root));
             }
             sc.close();
         }
