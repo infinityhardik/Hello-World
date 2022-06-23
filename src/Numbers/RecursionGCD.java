@@ -12,7 +12,6 @@ public class RecursionGCD
 {
     static int gcd(int x, int y)
     {
-        //Write code here
         int max = Math.max(x,y);
         int min = Math.min(x,y);
         if(max%min==0){
