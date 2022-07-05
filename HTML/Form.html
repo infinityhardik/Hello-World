@@ -1,29 +1,58 @@
 <!DOCTYPE html>
+
+<!--This is a Comment in HTML-->
+
 <html>
 <head>
     <title>Basic Structure</title>
+    <style>
+        /* This is Internal CSS and 
+        it selects all the Elements/Tags and applies the property. */
+        
+        /* Internal CSS Overrides External CSS */
+        
+        <!--Element Selector for Styling-->
+        h1{
+            color: antiquewhite;
+        }
+        
+        <!--using ID Selector-->
+        #gender{
+            color: aqua;
+        }
+        
+        <!--using Class Selector-->
+        .external{
+            color: bisque;
+        }
+    </style>
+
+    <link rel="stylesheet" href="Form.css"/>
 </head>
 <body>
     <h1>Sign In Form : </h1>
-    <select name="Cities">
+    <select class="external" name="Cities">
         <option value="mumbai">Mumbai</option>
         <option value="delhi">Delhi</option>
+        <option value="rajkot">Rajkot</option>
     </select>
-    <select name="Countries">
+    <select class="external" name="Countries">
         <option value="India">India</option>
         <option value="Germany">Germany</option>
     </select>
 
     <br>
     <form>
-        <label>First Name :</label>
+        <!--Inline CSS overrides Internal and External CSS-->
+        <label style="background:rgb(210, 241, 28);">First Name :</label>
         <input type="text" id="fname"/>
         <br>
-        <label>Gender: </label>
-        <input type="radio" value="Male" id="male" name="gender" />
+
+        <label for="gender">Gender: </label>
+        <input type="radio" value="Male" id="Male" name="Gender" />
         <label for="Male" >Male</label>
         
-        <input type="radio" value="Female" id="female" name="gender" />
+        <input type="radio" value="Female" id="Female" name="Gender" />
         <label for="Female">Female</label>
         
         <br />
