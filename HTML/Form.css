@@ -4,6 +4,13 @@ input{
     margin: 10px;
 }
 
+*{
+    /* Universal Selector for all elementsss */
+    padding: 2%;
+}
+
+/* # is used for slecting by ID */
+
 body{
     background-color:khaki;
 }
