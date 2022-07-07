@@ -1,0 +1,49 @@
+<html>
+ <head>
+    <title>HTML Form</title>
+ </head>    
+ <body>
+    <div>
+        <div>
+            Create your profile
+        </div>
+        <div>
+            <form>
+                <div>
+                    <!-- TODO 1: add a label tag to add 'Name:' as a label -->
+                    <label for="Name">Name:</label>
+                    <!-- TODO 2: add input tag with type text, give placeholder text "Insert your name here" -->
+                    <input type="text" name="Name" id="Name" placeholder="Insert your name here"/>
+                </div>
+                <div>
+                    <!-- TODO 3: add a label tag to add 'Gender:' as a label -->
+                    <label for="Gender">Gender:</label>
+                    <div id="radioButtons">
+                        <!--TODO 4: add input tag with type radio, give name 'gender' and value 'male' -->
+                        <input type="radio" name="gender" value="male" />
+                        <!-- TODO 5: add a label tag to add 'Male' as a label -->
+                        <label for="gender">Male</label>
+                        <!--TODO 6: add input tag with type radio, give name 'gender' and value 'female' -->
+                        <input type="radio" name="gender" value="female" />
+                        <!-- TODO 7: add a label tag to add 'Female' as a label -->
+                        <label for="gender">Female</label>
+                        <!--TODO 8: add input tag with type radio, give name 'gender' and value 'other' -->
+                        <input type="radio" name="gender" value="other" />
+                        <!-- TODO 9: add a label tag to add 'Other' as a label -->
+                        <label for="gender">Other</label>
+                    </div>
+                </div>
+                <div>
+                    <!-- TODO 10: add a label tag to add 'Date of birth:' as a label -->
+                    <label for="dob">Date of birth:</label>
+                    <!-- TODO 11: add input tag with type date to get date and time picker-->
+                    <input type="date" name="date" id="date"/>
+                </div>
+                <div>
+                    <input type="submit" value="Submit">
+                </div>
+            </form>
+        </div>
+    </div>
+ </body>
+</html>
