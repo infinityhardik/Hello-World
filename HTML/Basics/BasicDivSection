@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+ <html>
+     <head>
+        <!--DO NOT CHANGE-->
+        <style>
+            #container {
+                width: 80%;
+                height: 100%; 
+                border: #d7d7d7 1px solid; 
+                margin: 1em;
+                padding: 1em;
+            }
+        </style>
+        <!--DO NOT CHANGE-->   
+    </head>
+    
+    <body>
+        <div id="container">
+            <!-- TODO 1: Declare the heading "Basic technologies to learn Front End Development" using <h1> tag  -->
+            <h1>Basic technologies to learn Front End Development</h1>
+            <!-- TODO 2: Declare header tag  -->
+            <header>
+            <!-- TODO 3: Inside header, declare nav tag to have the three navigations -->
+                <nav>
+                    <ul>
+                        <a href="index.html"><li>HTML</li></a>
+                        <a href="index.html"><li>CSS</li></a>
+                        <a href="index.html"><li>Javascript</li></a>
+                    </ul>
+                </nav>
+            </header>
+            <!-- TODO 4: Add the section part  -->
+            <section>
+                You are going great. Keep it up!!!
+            </section>
+             <!-- TODO 5: Add the footer part  -->
+             <footer>
+                 <p>Page ends</p>
+             </footer>
+        </div>
+    </body>
+</html>
