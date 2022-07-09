@@ -1,0 +1,31 @@
+<!DOCTYPE html> 
+<html> 
+<head> 
+    <style> 
+        #para-id {    
+            background-color: red; 
+        } 
+        .para-class { 
+            background-color: black;
+            color: yellow; 
+        } 
+        p { 
+            background-color: green;
+            color: white; 
+        } 
+    </style> 
+</head> 
+<body> 
+    <p class="para-class" id="para-id">Color me!</p> 
+</body> 
+</html>
+
+<!-- The background color will be red and the text color will be yellow. 
+    This is because the id selector gets the highest priority. 
+    Here, id has a red background color and thus, the text will take up red as the background-color. 
+    Also, the class has higher priority than tag selector and, hence, the text color will become yellow.
+    
+    The order of priority of selectors is as follows: id selector > class selector > tag selector. 
+-->
+    
+<!-- Margin is a space that we give outside an element and padding is the space we declare inside the element. -->
