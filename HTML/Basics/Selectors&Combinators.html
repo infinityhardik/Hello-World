@@ -1,0 +1,79 @@
+<!-- 
+    TODO 1: first child of div should change background color to aquamarine on hover
+    TODO 2: when input checked, span should change font color to blue and text to 2em
+    TODO 3: provide styling to first child of div as:
+    > box-shadow: 1px 1px 1px 1px #d7d7d7;
+    > width: 200px;
+    > padding: 1em;
+    > margin: 1em 1em 1em 0em;
+    TODO 4: last child of div should be hidden [hint: use display property to hide the div]
+    TODO 5: when first div child clicked, last child of div should be visible with margin of 1em
+    TODO 6: change font size of first letter of the first child to 2em
+    
+    
+    Note: do not touch body part
+    
+-->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        div:first-child {
+            box-shadow: 1px 1px 1px 1px #d7d7d7;
+            width: 200px;
+            padding: 1em;
+            margin: 1em 1em 1em 0em;
+        }
+        
+        div:first-child::first-letter {
+            font-size: 2em;
+        }
+        
+        div:first-child:focus ~ div:last-child{
+            margin: 1em;
+            display: block;
+        }
+        
+        div:first-child:hover {
+            background-color: aquamarine;
+        }
+        input:checked~span {
+            color: blue;
+            font-size: 2em;
+        }
+        div:last-child {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div tabindex="1">Select user status</div>
+    <div>
+        <label>
+            <input type="checkbox">
+            <span>2 minutes ago</span>
+        </label>    
+    </div>
+    
+    <div>
+        <label>
+            <input type="checkbox">
+            <span>1 hour ago</span>
+        </label>
+    </div>
+    
+    <div>
+        <label>
+            <input type="checkbox">
+            <span>yesterday</span>
+        </label>
+    </div>
+    <div>
+        <input type="submit">
+    </div>
+    
+</body>
+</html>
+
+
