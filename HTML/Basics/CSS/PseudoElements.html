@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            background: linear-gradient(to left, yellow 0%, #d7d7d7 100%);
+        }
+        p::before {
+            content: '"';
+        }
+        p::after {
+            content: '" - Martin Fowler';
+        }
+        p::selection {
+            color: tomato;
+        }
+        
+        p::first-line {
+            color: blue;
+        }
+        
+        a[href^="#a"]::before {
+            content: 'a';
+            width: 50px;
+            height: 50px;
+            border: 1px solid red;
+            border-radius: 50%;
+            margin: 1em;
+            padding: 5px;
+        }
+        a[href^="#b"]::before {
+            content: 'b';
+            width: 50px;
+            height: 50px;
+            border: 1px solid blue;
+            border-radius: 50%;
+            margin: 1em;
+            padding: 5px;
+        }
+        a[href^="#c"]::before {
+            content: 'c';
+            width: 50px;
+            height: 50px;
+            border: 1px solid green;
+            border-radius: 50%;
+            margin: 1em;
+            padding: 5px;
+        }
+        
+        /* Selects an <a> element whose href attribute value begins with #c. */
+        /* p[title^="para"] {background: green;} >>>> will match the following: <p title="paragraph"> This paragraph should have a green background. </p */
+                a {
+                    display: block;
+                    margin: 1em;
+                    text-decoration: none;
+                    color: red;
+                }
+                .contactUs {
+                    margin-top: 2em;
+                    
+                }
+                
+            </style>
+        </head>
+        <body>
+            <p>
+                Any fool can write code that a computer can understand. Good programmers write code that humans can understand.
+            </p>
+            
+            <div class="contactUs">
+                <span>Contact us:</span>
+                <a href="#abcd">abc.zmail.com</a>
+                <a href="#b">bcd.zmail.com</a>
+                <a href="#a">ajl.zmail.com</a>
+                <a href="#c">cjdl.zmail.com</a>
+            </div>
+        </body>
+        </html>
