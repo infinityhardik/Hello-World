@@ -1,0 +1,67 @@
+<!-- 
+    TODO 1: Provide a smooth transitions to the card between colors rgb(209, 7, 84) and #e76ab7 towards left direction
+    TODO 2: The position of the card should be relative to the web page.
+    TODO 3: The bank name is justified at the top left of the card and logo at the top right of the card with some space between them.
+    TODO 4: For the logo part, one div has provided. Your task is to make that div as a logo, specifications are:
+    > border: 1px white solid
+    > using border radius property, convert this square div into circular
+    > width: 25px
+    > height: 25px
+    > margin-top: 0.24em
+    > fill logo with color aqua;
+    TODO 5: Add account number and account holder div at the left bottom of the card having bottom margin as 1em.
+    TODO 6: make all font color as white
+    
+    NOTE: do not touch the body part
+-->
+
+<!DOCTYPE html>
+<html>
+<style>
+    
+    #container {
+        width: 300px;
+        height: 200px;
+        padding: 1em;
+        background: linear-gradient(to left, rgb(209, 7, 84), #e76ab7);
+        position: relative;   
+    }
+    #account-number {
+        color: white;
+        bottom: 0;
+        position: absolute;
+        margin-bottom: 1em;
+    }
+    #bank-name {
+        font-size: 2em;
+        color: white;
+    }
+    #bank-logo {
+        border: 1px white solid;
+        border-radius: 50%;
+        width: 25px;
+        height: 25px;
+        margin-top: 0.24em;
+        background-color: aqua;
+    }
+    #header {
+        display: flex;
+        justify-content: space-between;
+    }
+    
+</style>
+<body>
+    <div id="container">
+        <div id="account-number">
+            A/c number: XXXX-XXXX-XXXX-0000
+            Account holder name: abc def
+        </div>
+        <div id="header">
+            <div id="bank-name">
+                Abc bank of India
+            </div>
+            <div id="bank-logo"></div>
+        </div>
+    </div>
+</body>
+</html>
