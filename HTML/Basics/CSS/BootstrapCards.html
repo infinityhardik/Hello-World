@@ -1,0 +1,55 @@
+<!-- 
+    TODO 1: width of the card - 200px
+    TODO 2: insert an image 'https://cdn4.iconfinder.com/data/icons/small-n-flat/24/user-512.png' of width of 150 px and a height of 150 px inside card-header div
+    TODO 3: The content inside div having id 'about' will be in the form of bullets and centre aligned.
+    TODO 4: Below details are to be mentioned: 
+            > Name:upGrad
+            > Gender:Edtech
+            > Age:Infinite
+    TODO 5: In the footer part of the card, add an info button using bootstrap. Provide inner text "Know more".
+    TODO 6: align info button in the center of the div using display and margin property
+ -->
+
+ <!DOCTYPE html>
+ <html>
+  <head>
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+   <style>  
+     #about {
+       align-content: center;
+     }
+   </style>
+  </head>
+  <body>
+   <div class="container">
+     <h4>Social Media Card</h4>
+     <!-- TODO create below div having class "card" -->
+     <div class="card" style="width: 200px;">
+         <!-- TODO create below div  having class "card-header" -->
+         <div class="card-header">
+             <!-- TODO add image -->
+             <img id="image" src="https://cdn4.iconfinder.com/data/icons/small-n-flat/24/user-512.png" alt="image" width="150px" height="150px"/>
+             <hr>
+             <div id="about">
+                 <!-- TODO add details in unordered list -->
+                 <ul>
+                    <li>Name:upGrad</li>
+                    <li>Gender:Edtech</li>
+                    <li>Age:Infinite</li>
+                 </ul>
+             </div>
+       </div>
+       <!-- TODO create below div as of type "card-footer"-->
+       <div class="card-footer">
+           <!-- TODO create info button using bootstrap -->
+           <button type="button" class="btn btn-info" style="display: flex; margin:auto">Know More</button>
+       </div> 
+     </div>
+   </div>
+ </body>
+ </html>
+ 
+ 
