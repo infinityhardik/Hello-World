@@ -1,0 +1,86 @@
+<!-- 
+    TODO 1: Provide an id "carousel-container" to the outer div of carousel
+    TODO 2: Specify the data-ride attribute of carousel-container div as carousel
+    TODO 3: The carousel-container should have className as "carousel slide"
+    TODO 4: add a CSS transition and animation 'slide' effect to the carousel-container div
+    TODO 5: use data-ride attribute to begin animating the carousel on page load.
+    TODO 6: The inner carousel div has class "carousel-inner"
+    TODO 7: Provide 4 indicators for 4 images, make first indicator as active
+    TODO 8: The 4 indicators are wrapped inside class "carousel-indicators"
+    TODO 9: Add four images with caption(caption inside h1 tag):
+    > image 1: https://mdbootstrap.com/img/Photos/Slides/img%20(81).jpg
+    > caption 1: "Leadership"
+    > image 2: https://mdbootstrap.com/img/Photos/Slides/img%20(82).jpg
+    > caption 2: "Empathy"
+    > image 3: https://mdbootstrap.com/img/Photos/Slides/img%20(80).jpg
+    > caption 3: "Accountability"
+    > image 4: https://mdbootstrap.com/img/Photos/Slides/img%20(119).jpg
+    > caption 4: "Delivering Excellence"
+    TODO 10: Each image and caption should be wrapped insiditem"
+    TODO 11: The caption should be provided inside class "carousel-caption"
+    TODO 12:Make first image as active
+-->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <style>
+        .carousel-inner {
+            box-shadow: 5px 10px 10px #d7d7d7;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Slide show</h2>
+        <div id="carousel-container" class="carousel slide" data-ride="carousel">
+            <!-- Indicators -->
+            <ol class="carousel-indicators">
+                <li data-target="#carousel-container" data-slide-to="0" class="active"></li>
+                <li data-target="#carousel-container" data-slide-to="1"></li>
+                <li data-target="#carousel-container" data-slide-to="2"></li>
+                <li data-target="#carousel-container" data-slide-to="3"></li>
+            </ol>
+            <div class="carousel-inner">
+                <div class="item active">
+                    <img src="https://mdbootstrap.com/img/Photos/Slides/img%20(81).jpg" class="d-block w-100" alt="...">
+                    <div class="carousel-caption">
+                        <h2>Leadership</h2>
+                    </div>
+                </div>
+                <div class="item">
+                    <img src="https://mdbootstrap.com/img/Photos/Slides/img%20(82).jpg" class="d-block w-100" alt="...">
+                    <div class="carousel-caption">
+                        <h2>Empathy</h2>
+                    </div>
+                </div>
+                <div class="item">
+                    <img src="https://mdbootstrap.com/img/Photos/Slides/img%20(80).jpg" class="d-block w-100" alt="...">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h2>Accountability</h2>
+                    </div>
+                </div>
+                <div class="item">
+                    <img src="https://mdbootstrap.com/img/Photos/Slides/img%20(119).jpg" class="d-block w-100" alt="...">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h2>Delivering Excellence</h2>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Left and right controls -->
+            <!-- <button class="carousel-control-prev" type="button" data-bs-target="#carousel-container" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carousel-container" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button> -->
+        </div>
+    </div>
+</body>
+</html>
