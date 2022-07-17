@@ -1,0 +1,75 @@
+<!-- 
+  1. Provide width of upArrow, downArrow, leftArrow, and rightArrow to 100px
+  2. translate upArrow horizontally at the 800px
+  3. translate downArrow horizontally at the 600px
+  4. translate leftArrow horizontally at the 400px
+  5. translate rightArrow horizontally at the 200px
+  6. Form downward arrow, left arrow, and right arrow using transform functionality[hint: use rotate function]
+  7. On hover on the arrows, 
+  > provide width 200px
+  > provide transition effect for the width property, with a duration of 3 seconds
+  
+  NOTE: do not touch body part
+-->
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <style>
+    
+    #upArrow{
+      transform: translateX(800px);
+      width: 100px;
+    }
+    #upArrow:hover{
+      width: 200px;
+      transition: width 3s;
+    }
+    
+    #downArrow{
+      transform: translateX(600px) rotate(180deg);
+      width: 100px;
+    }
+    
+    #downArrow:hover{
+      width: 200px;
+      transition: width 3s;
+    }
+    
+    #leftArrow{
+      transform: translateX(400px) rotate(90deg);
+      width: 100px;
+    }
+    #leftArrow:hover{
+      width: 200px;
+      transition: width 3s;
+    }
+    
+    #rightArrow{
+      transform: translateX(200px) rotate(270deg);
+      width: 100px;
+    }
+    #rightArrow:hover{
+      width: 200px;
+      transition: width 3s;
+    }
+    
+  </style>
+</head>
+<body>
+  <h1>Arrows</h1>
+  <div>
+    <img id="upArrow" src="Assets/uparrow.png" >
+  </div>
+  <div>
+    <img id="downArrow" src="Assets/uparrow.png" >
+  </div>
+  <div>
+    <img id="leftArrow" src="Assets/uparrow.png" >
+  </div>
+  <div>
+    <img id="rightArrow" src="Assets/uparrow.png" >
+  </div>
+</body>
+</html>

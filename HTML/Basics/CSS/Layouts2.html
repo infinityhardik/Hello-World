@@ -1,75 +1,75 @@
 <!DOCTYPE html>
 <html>
-   <style>
-       
-       #main-container {
-           display: flex;
-           flex-direction: row;
-       }
-
-       .container {
-            width: 15em;
-            height: 15em; 
-            border: blue 1px solid; 
-            margin: 1em;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-       }
-       .container:hover {
-           background-color: yellow;
-       }
-
-       .container:hover .number{
-           display: none;
-       }
-
-       .container:hover .alpha{
-           display: block;
-       }
-       .number {
-           font-size: 15px;
-           color: blue;
-       }
-       .alpha {
-           display: none;
-           font-family: sans-serif;
-       }
-       .tANDc {
-           position: fixed;
-           right: 0;
-           bottom: 0;
-       }
-       a {
+<style>
+    
+    #main-container {
+        display: flex;
+        flex-direction: row;
+    }
+    
+    .container {
+        width: 15em;
+        height: 15em; 
+        border: blue 1px solid; 
+        margin: 1em;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .container:hover {
+        background-color: yellow;
+    }
+    
+    .container:hover .number{
+        display: none;
+    }
+    
+    .container:hover .alpha{
+        display: block;
+    }
+    .number {
+        font-size: 15px;
+        color: blue;
+    }
+    .alpha {
+        display: none;
+        font-family: sans-serif;
+    }
+    .tANDc {
+        position: fixed;
+        right: 0;
+        bottom: 0;
+    }
+    a {
         text-decoration: none;
+        
+    }
+</style>
 
-       }
-   </style>
-
-   <body>
-       <div id="main-container">
-           <div class="container">
-               <div class="number">1</div>
-               <div class="alpha">one</div>
-            </div>
-           <div class="container">
-                <div class="number">2</div>
-                <div class="alpha">two</div>
-            </div>
-           <div class="container">
-                <div class="number">3</div>
-                <div class="alpha">three</div>
-            </div>
-           <div class="container">
-                <div class="number">4</div>
-                <div class="alpha">four</div>
-            </div>
-            <div class="tANDc">
-                <a href="#">Terms and Condition</a>
-
-            </div>
-       </div>
-   
-   </body>
+<body>
+    <div id="main-container">
+        <div class="container">
+            <div class="number">1</div>
+            <div class="alpha">one</div>
+        </div>
+        <div class="container">
+            <div class="number">2</div>
+            <div class="alpha">two</div>
+        </div>
+        <div class="container">
+            <div class="number">3</div>
+            <div class="alpha">three</div>
+        </div>
+        <div class="container">
+            <div class="number">4</div>
+            <div class="alpha">four</div>
+        </div>
+        <div class="tANDc">
+            <a href="#">Terms and Condition</a>
+            
+        </div>
+    </div>
+    
+</body>
 
 </html>

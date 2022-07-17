@@ -1,79 +1,79 @@
 <!-- 
-   TODO 1: align the container row wise using flex property.
-   TODO 2: justify the content inside container at the end.
-   TODO 3: split inner-container into three fragments 1:3:1 using grid, again column wise
-   TODO 4: inside  inner-container the text should be aligned in the center
-   TODO 5: shift content inside container div to left when user hovers over it.
+    TODO 1: align the container row wise using flex property.
+    TODO 2: justify the content inside container at the end.
+    TODO 3: split inner-container into three fragments 1:3:1 using grid, again column wise
+    TODO 4: inside  inner-container the text should be aligned in the center
+    TODO 5: shift content inside container div to left when user hovers over it.
 -->
 
 <!-- View in Browser for Better Visibility -->
 
 <!DOCTYPE html>
 <html>
-   <style>
-       #container {
-           background-color: coral;
-           display: flex;
-           flex-direction: row;
-           justify-content: flex-end;
-       }
-       
-       #container:hover{
-           justify-content: flex-start;
-       }
+<style>
+    #container {
+        background-color: coral;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+    }
+    
+    #container:hover{
+        justify-content: flex-start;
+    }
+    
+    #inner-container {
+        width: 15em;
+        height: 15em; 
+        border: #d7d7d7 1px solid; 
+        margin: 1em;
+        box-shadow: 2px 2px 2px #d9d9d9;
+        padding: 1em;
+        background-color: #d7d7d7;
+    }
+    
+    #inner-container{
+        display: grid;
+        text-align: center;
+    }
+    #inner-container>div:first-child{
+        grid-area: 1/1/1/2
+    }
+    #inner-container>div:nth-child(2){
+        grid-area: 1/2/1/5;
+    }
+    #inner-container>div:last-child{
+        grid-area: 1/5/1/6;
+    }
+</style>
 
-       #inner-container {
-           width: 15em;
-           height: 15em; 
-           border: #d7d7d7 1px solid; 
-           margin: 1em;
-           box-shadow: 2px 2px 2px #d9d9d9;
-           padding: 1em;
-           background-color: #d7d7d7;
-       }
-       
-       #inner-container{
-           display: grid;
-           text-align: center;
-       }
-       #inner-container>div:first-child{
-           grid-area: 1/1/1/2
-       }
-       #inner-container>div:nth-child(2){
-           grid-area: 1/2/1/5;
-       }
-       #inner-container>div:last-child{
-           grid-area: 1/5/1/6;
-       }
-   </style>
-
-   <body>
-       <div id="container">
-           <div id="inner-container">
-               <div>
-                   <
-               </div>
-               <div>
-                   Div 1
-               </div>
-               <div>
-                   >
-               </div>
-           </div>
-           <div id="inner-container">
-               <div>
-                   <
-               </div>
-               <div>
-                   Div 2
-               </div>
-               <div>
-                   >
-               </div>
-           </div>
-       </div>
-   
-   </body>
+<body>
+    <div id="container">
+        <div id="inner-container">
+            <div>
+                <
+            </div>
+            <div>
+                Div 1
+            </div>
+            <div>
+                >
+            </div>
+        </div>
+        <div id="inner-container">
+            <div>
+                <
+            </div>
+            <div>
+                Div 2
+            </div>
+            <div>
+                >
+            </div>
+        </div>
+    </div>
+    
+</body>
 
 </html>
 

@@ -1,0 +1,42 @@
+<!-- 
+    TODO 1: Initial colour will be black:
+    TODO 2: When it goes right it becomes: grey
+    TODO 3: While going down it becomes maroon
+    TODO 4: While left it becomes pink
+    TODO 5: Then on going to the initial position it fades again. (provide white color to the background)
+-->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <style> 
+        div {
+            width: 100px;
+            height: 100px;
+            background-color: black;
+            position: relative;
+            animation: myMove 5s linear infinite;
+        }
+        
+        @keyframes myMove {
+            25%{transform: translateX(100px);background-color: grey;}
+            50%{transform: translate(100px,100px);background-color: maroon;}
+            75%{transform: translateY(100px);background-color: pink;}
+            100%{transform: translate(0px, 0px);background-color: white;}
+        }
+        
+        /* @keyframes myMove {
+            0%   {top: 0px; left: 0px; background: black;}
+            25%  {top: 0px; left: 100px; background: grey;}
+            50%  {top: 100px; left: 100px; background: maroon;}
+            75%  {top: 100px; left: 0px; background: pink;}
+            100% {top: 0px; left: 0px; background: white;}
+        } */
+        
+    </style>
+</head>
+<body>
+    <h1>Lets Move the box</h1>
+    <div></div>
+</body>
+</html>
