@@ -7,22 +7,22 @@ header{
    padding: 1%;
    background-color: #186CA3;
    color: white;
-   }
+}
 .container{
    display: flex;
    flex-direction: row;
    justify-content: space-between;
 }
 .menu-block{
-    width:20%;
-    background-color:grey;
-    padding:5%;
-    color:white;
-    height:100vh;
+   width:20%;
+   background-color:grey;
+   padding:5%;
+   color:white;
+   height:100vh;
 }
 .board-container{
-    width:80%;
-    padding: 2%;
+   width:80%;
+   padding: 2%;
 }
 input{
    padding: 1%;
@@ -42,17 +42,35 @@ input{
 }
 
 .project-card{
-    background-color: grey;
-    padding:2%;
-    border-radius:5px;
-    margin:10px 0;
-    color: white;
-    width: 30%;
- }
- .project-block{
-    display:flex;
-    flex-direction: row;
-    justify-content: space-between;
-    flex-wrap: wrap;
- }
- 
+   background-color: grey;
+   padding:2%;
+   border-radius:5px;
+   margin:10px 0;
+   color: white;
+   width: 30%;
+}
+.project-block{
+   display:flex;
+   flex-direction: row;
+   justify-content: space-between;
+   flex-wrap: wrap;
+}
+
+/* 
+
+Suppose :
+
+.project-block{
+   display:flex;
+   flex-direction: row;
+   justify-content: space-between;
+}
+
+The display of the parent container "project-block" is set to flex with the flex-direction as row . 
+This will force the elements to align horizontally. 
+The flex-wrap property is not defined here, so it will take a default " nowrap " 
+which forces the elements to appear in the same line. So, the four project cards will occupy the same line. 
+In case the width is increased to more than 25%, it will have no impact on the project cards as the max-width 
+of the "project-cards" combined cannot exceed 100%. To increase -the width of the project-cards, 
+the flex-wrap should be set to wrap.
+*/
