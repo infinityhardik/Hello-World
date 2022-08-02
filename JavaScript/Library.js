@@ -28,3 +28,9 @@ var library = {
 		]
 	}
 }
+
+console.log(library.shelf1.categories[1]);
+// Dot Notation to access Object Property.
+
+console.log(library["shelf1"]["categories"][1]);
+//Square Bracket Notation to access Object Property.
