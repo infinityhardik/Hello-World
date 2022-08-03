@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>   
+   <title>Styling with Javascript</title>   
+</head>
+<body>
+   <p>Hi there,</p>
+   <p id="customPara">Change my color using Javascript</p>
+   <script>
+         document.getElementById('customPara').style.color = '#ff0000';
+         document.getElementById('customPara').setAttribute('style', 'background-color:blue; padding:10px; text-align:center;');
+         document.getElementById('customPara').setAttribute('class', 'paragraph');
+         // Visible on DevTools Pane on Page Load
+   </script>
+</body>
+</html>
