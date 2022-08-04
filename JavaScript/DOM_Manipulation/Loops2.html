@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>JavaScript loops</title>
+</head>
+<body>
+   <h1>Let's some JavaScript loops</h1>
+   <p class="customPara"></p>
+   <p class="customPara"></p>
+   <p class="customPara"></p>
+   <p class="customPara"></p>
+  <script>
+ //Write your code here
+ let number = ['one', 'two', 'three', 'four'];
+ let para = document.getElementsByClassName('customPara');
+ console.log(para);
+ for(var i=0; i<4; i++){
+     para[i].innerHTML = "This is the paragraph number "+number[i];
+ }
+</script>
+</body>
+</html>

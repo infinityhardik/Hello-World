@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>   
+    <title>JavaScript Events</title>
+    
+</head>
+<body>
+    <h1>Let's create a JavaScript Event</h1>
+    <button type="submit" onclick="alert('You have submitted the form');">Submit</button>
+    <button type="submit">Submit</button>
+    
+    <!-- <button type="submit" onclick="alert("You have submitted the form");">Submit</button> -->
+    <!-- The button inside comment will show an error and we need to use escape character \ to use double quotes within another set of double quotes -->
+    
+    <script>
+        let button = document.getElementsByTagName('button');
+        button[1].setAttribute("onclick", "alert(\"JS Events Escape Character for Double Quotes\");");
+    </script>
+</body>
+</html>
