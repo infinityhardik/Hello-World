@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body{
+            font-family: sans-serif;
+            text-align: center;    
+        }
+        h1{
+            
+            color: blue;
+            position: relative;
+        }
+        div{
+            
+            color: black;
+            position: relative;
+        }
+        h2{
+            color:red;
+        }
+    </style> 
+</head>
+<body>
+    <h1>Thank You,</h1>
+    <div id="addTemplate"></div>
+    
+    <script>
+        var add = '<p>For attending our conference on Frontend Development.</p>'+
+        '<p>Hope all of you found it informative!!!</p>'+
+        '<p> We look forward to see you all in future conferences.'+'<p>Best Regards,</p>'+'<h2>Team UpGrad</h2>';
+        document.getElementById('addTemplate').innerHTML+=add;        
+    </script>
+</body>
+</html>

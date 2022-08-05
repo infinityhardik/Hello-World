@@ -25,6 +25,8 @@ function showProject(listId){
         }else{
             document.getElementById('projectList').innerHTML +=template;
         }
+        // Hard-coding List Id in else loop if new ID is not passed as a parameter.
+        // This is to make sure that a default board is visible on page load.
     })
 }
     
@@ -55,3 +57,15 @@ function addBoard(id){
     document.getElementById('boardBlockList').innerHTML += templateBlock;
     showProject(listId);
 }
+
+/* 
+To add the project card to a board, 
+we followed the usual method to create the template, where we added the HTML code. 
+Then the method appended the project card to the board. 
+The project card needs an ID (projectList) to be added to the project board, 
+and the template adds the same ID every time it is hardcoded. However, the ID cannot be duplicated, 
+so this will not work. To overcome this issue, we created a variable idName and set it to 1. 
+This variable was incremented each time the function to create the project card was run. 
+After creating the dynamic ID value, the value was passed to the function showProjects(), 
+which were called in the same method.
+*/
