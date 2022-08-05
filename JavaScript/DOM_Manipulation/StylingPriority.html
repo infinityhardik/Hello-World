@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <title>JavaScript</title>
+    <style>
+        p{
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <p style="color:blue" >This text is here</p>
+    <script>
+        document.getElementsByTagName('p')[0].style.color='grey' ;
+    </script>
+</body>
+</html>
+<!-- In CSS, the inline style always takes priority over the external CSS. 
+So, the colour blue will take priority over the colour red. 
+However, the browser encounters the JavaScript after the inline style. 
+So, the JavaScript will change the colour of the text to grey.  -->
