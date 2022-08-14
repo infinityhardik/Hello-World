@@ -1,6 +1,7 @@
 // Resolve & Reject is a Callback 
 // Promise is in itself a Callback Function 
 // Check > new Promise ((res, rej)=>{}); This makes the producer code call implicitly upon object creation.
+// res and rej are parameters to the function above.
 
 
 // Resolving a promise
