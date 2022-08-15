@@ -1,0 +1,54 @@
+<head>
+    <script src="index.js"></script>
+    <link rel="stylesheet" href="index.css" />
+    <title>Open Air Quality Org</title>
+    
+    <style>
+        #container {
+            text-align: center;
+            padding-top: 10%;
+        }
+        
+        #submit {
+            background: lightblue;
+            padding: 10px 40px;
+        }
+    </style>
+    
+</head>
+<body>
+    <div id="container">
+        <h1>Open Air Quality Data</h1>
+        <form id="country-form">
+            <p class="labelText">Enter Country Code</p>
+            <input type="text" placeholder="eg. IN for India" id="country" />
+        </form>
+        <button id="submit" onclick="getCities(country)">Submit</button>
+    </div>
+    
+    <script>
+        function getCities(country) {
+            var xhr = new XMLHttpRequest();
+            var url = "https://api.openaq.org/v1/cities?country=" + country.value;
+            xhr.open("GET", url);
+            xhr.send();
+            xhr.onreadystatechange = () => {
+                if (xhr.readyState === 4) {
+                    console.log(xhr.responseText);
+                }
+                
+                /* 
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    printCities(xhr.response);
+                }
+                */
+            };
+        }
+        
+        /* 
+        function printCities(response) {
+            console.log(response);
+        }
+        */
+    </script>
+</body>
