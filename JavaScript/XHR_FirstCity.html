@@ -1,0 +1,57 @@
+<!-- Adding Details Dynamically to a Page after Fetching Server Response -->
+
+<head>
+    <script src="index.js"></script>
+    <link rel="stylesheet" href="index.css" />
+    <title>Open Air City List</title>
+    
+    <style>
+        #container {
+            text-align: center;
+            padding-top: 10%;
+        }
+        
+        #form-button {
+            background: lightblue;
+            padding: 10px 40px;
+            border: 0ch;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <h1>First City Of A Country</h1>
+        <div id="form-id">
+            <form id="country-form">
+                <p class="labelText">Enter The Country Code</p>
+                <input type="text" placeholder="eg., IN for India" id="country" />
+            </form>
+        </div>
+        <button id="form-button" onclick="enterTheCode(country)">Submit</button>
+        <h3>First City in the output of the Country Searched</h3>
+        <div id="city-list"></div>
+    </div>
+    
+    <script>
+        var xhr = new XMLHttpRequest();
+        
+        function enterTheCode(country) {
+            var getString =
+            "https://api.openaq.org/v1/cities?country=" + country.value;
+            xhr.open("GET", getString);
+            xhr.send();
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    printStuff();
+                }
+            };
+        }
+        
+        function printStuff() {
+            var output = JSON.parse(xhr.response);
+            document.getElementById("city-list").innerHTML +=
+            "<p>" + output.results[0].city + "</p>";
+        }
+    </script>
+</body>

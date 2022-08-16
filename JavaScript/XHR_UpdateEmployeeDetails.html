@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Employee Registration</title>
+    
+    <style>
+        #container {
+            text-align: center;
+            padding-top: 10%;
+        }
+        
+        .form-button {
+            background: lightblue;
+            padding: 10px 40px;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <h2>Employee Registration Form</h2>
+        <form id="form-container">
+            <label for="firstName">Name:</label><br />
+            <input id="firstName" type="text" placeholder="Enter your first name" />
+            <br /><br />
+            <label for="roleOfEmployee">Role:</label><br />
+            <input id="roleOfEmployee" type="text" placeholder="Enter your roleOfEmployee" />
+        </form>
+        <button
+        id="register-button"
+        class="form-button"
+        onclick="registerEmployee(firstName, roleOfEmployee)"
+        >
+        Register
+    </button>
+    <button
+    id="update-button"
+    class="form-button"
+    onclick="updateEmployee(firstName, roleOfEmployee)"
+    >
+    Update
+</button>
+</div>
+<script src="XHR_UpdateEmployeeDetails.js"></script>
+</body>
+</html>

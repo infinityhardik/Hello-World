@@ -24,6 +24,9 @@ function registerEmployee(name, role){
                 console.log(parsedResponse);
                 
                 alert("Employee with ID " + parsedResponse.id + " successfully registered!");
+
+                sessionStorage.setItem('user-details', xhr.responseText);
+                // Storing the user details in the Session Storage of the Browser
             }
         }
     } else {

@@ -333,3 +333,127 @@ On the other hand, retrieving data for a random string takes much more time than
 You can refer to this link to read more about how tokens are generated.
 
 After obtaining the access token, you need to store it to use it to make API calls in the future. In the next session, you will learn how to use the browser's storage space to store useful information.
+
+# Session Storage
+
+In the previous session, you saw how the server sent an access token along with the successful login. This access token acts as a 'ticket' for a user to access other APIs provided by the server to a registered user. However, we need to store this access token somewhere to reuse it for future API calls. This means that every time you are logged in, you need to store the access token somewhere on the client-side to determine if the user is already logged in. In the next video, you will learn about the different ways of storing the access token on the client-side.
+
+Before HTML5, storage on the web was available in cookies. According to MDN, an HTTP cookie is a small piece of data that a server sends to the user’s browser (client). The browser may store this cookie and send it back inside the HTTP header of the next request to the same server. Typically, it is used to determine if the two requests came from the same browser. Thus, when the user visits a web page next time, the server extracts the cookies from the HTTP header and recognises the user with the data that came along with the request.
+
+The limitation with cookies is their size; they are limited to 4,096 bytes. This severely reduces the amount of data you can store on the client-side. Also, cookies are to be sent in the header with each HTTP request. This wastes bandwidth and thus worsens performance, especially on mobile network connections.
+
+This is why HTML5 introduced two new storage options in the browser: Session Storage and Local Storage. These generally provide memory storage of at least 5 MB, which is a huge jump from the cookie’s 4 KB.
+
+As the name suggests, session storage only persists until the session remains active, i.e., the data stored in the session storage remains in the memory only until the browser tab remains open. On the other hand, the data stored in the local storage remains in the memory until it is explicitly deleted by clearing the browser's cache or instructing the browser to clear local storage.
+
+The differences between the three types of browser storage options available are summarised in the table below.
+
+**Cookie**
+
+> Memory : 4 KB
+> Persistence (Lifetime of data) : Unlimited unless explicitly deleted
+> Access : Can be accessed by both the server and the client; can be programmed only server-access
+> Preferred usage : For storing sensitive data of the server/client
+
+**Session Storage**
+
+> Memory : At least 5 MB
+> Persistence (Lifetime of data) : Stores the value till the browser's tab remains open
+> Access : It can be accessed only by the client
+> Preferred usage : For storing values that only need to persist for the duration of a tab
+> Example: Score in a game
+
+**Local Storage**
+
+> Memory : At least 5 MB
+> Persistence (Lifetime of data) : Unlimited unless explicitly deleted by clearing cache or clearing local storage
+> Access : It can be accessed only by the client
+> Preferred usage : For storing values that require persistence unless explicitly stated otherwise
+> Example: Logged-in state of a user
+
+# Storing Credentials in Browser
+
+Facebook and Gmail do not ask for your login credentials if you click on ‘Remember Me’ the first time you log in.
+
+This happens because they store some information to validate you on your browser. Where exactly do you think would your validating information be stored in your browser?
+
+**Cookies**
+
+✓ Correct
+Feedback:
+When a user logs in, a random string is generated, and this string is stored as a validation for the user in the server database. When a user clicks on 'Remember Me', the server sends this string in a cookie and programs this cookie such that it can be accessed only by the server. So, when the user opens the website again, the server just looks for this cookie and allows the user to bypass the login process.
+
+_Local Storage_
+
+_✕ Incorrect_
+
+Feedback:
+When a user logs in, a random string is generated, and this string is stored as a validation for the user in the server database. When a user clicks on 'Remember Me', the server sends this string so that it can be stored in the browser. The problem with session storage is that it is accessible by any user on the system and is set on the system's client side and as such poses a grave security threat because it can be accessed by the client. Client-side access means that any application on the client system can access the data. So, this string can get stolen by any malicious software and can be used by this application to gain access to the server as a user.
+
+Also, the value will not persist after the tab or window is closed, rendering the entire point useless.
+
+**Session storage** is part of the storage APIs provided by browsers. An interesting thing about session storage is that it has the unique property of persisting in the memory for the duration of the session. Thus, the data stored in session storage is available as long as the browser tab remains open. This particular property makes session storage perfect for applications where you need a value to persist throughout the application (for example, items in your cart in Amazon) or the server's access token.
+
+Using session storage, such data tend to be too large to be stored in a cookie. For example, sending multiple cookies for the items with all their details in your shopping cart might cause problems in the data even if a single cookie goes missing, thereby corrupting the whole data. Local storage should not be used for such use cases because it is mainly used to persist data in the memory, and such data should not stay in the memory for more time than required. For example, you need to store the data inside your cart only until you make the payment. You can also use local storage and manually clear the data when the session is over (tab is closed), but storing such data for a long time will quickly fill up the local storage.
+
+# window Object
+
+The window object is the global object for a browser that provides it with the capabilities of the browser's window. Any variable or function defined globally is said to be a property/method of the window object.
+
+An example of this can be found in the following code snippet:
+
+var carCompany = "maserati";
+console.log(window.carCompany);
+
+Output: "maserati"
+
+In the code snippet above, carCompany is defined at a global level and hence becomes a property of the window object. Thus, the variable carCompany is accessed over the window object in the console.log() method.
+
+Some common methods and properties provided by the window object are as follows:
+
+**window.innerHeight**: This property provides the height (in pixels) of the viewport of the browser's window.
+**window.open()**: This method opens a new browser window with the given URL.
+**window.scrollTo()**: This method scrolls to a particular set of coordinates on the browser's window.
+**window.location**: This property provides the current location/URL of the browser's window.
+
+**window.location.href** is synonymous to using window.location.
+
+**Impact of Resizing Browser Window on window.innerHeight :**
+The window object is a global object and represents the current window in the browser. Also, window.innerHeight shows the inner height of the browser's window.
+Suppose window.innerHeight is 250px when the browser's window is fullscreen.
+What do you think will happen to window.innerHeight if the browser's height is changed?
+
+The window object represents the current window in the browser. Resizing the height of the browser's window would resize the window currently open. This would cause window.innerHeight to change as the inner height will decrease in size.
+
+This property is quite helpful when you want a responsive design on your web page. Getting the current inner height will enable you to adjust your CSS accordingly so that the web page looks the way you want on every device.
+
+# Navigating to a Home Page
+
+In JavaScript, **redirection and navigation** are provided through two methods, the window.location property and the window.open() method, which can be summarised as follows:
+
+**window.location / window.location.href opens a new web page in the same tab.**
+**window.open() opens a web page in a new tab or window.**
+
+If you want to redirect the page to the Google home page using the window.location.href property, you need to provide the complete address of the web page, i.e., https://www.google.com, and not just write the URL www.google.com.
+**window.location.href = 'https://www.google.com';**
+**window.location.href = './home.html';** >> For Reirecting back to the Home Page
+This is because www.google.com is a relative link, and the window.location.href property will append relative links (www.google.com) at the end of the current page URL address.
+
+On the other hand, https://www.google.com is an absolute address, which informs window.location.href to go to that address instead of appending it to the current page URL address.
+
+**Values stored in session storage cannot be accessed across different browser tabs. Session storage persists for that particular tab only; hence, it will not be available to the new tab**
+
+
+
+# Retrieving data stored in session storage
+
+We retrieved the access token from session storage and used it in the Authorization header to dynamically get data for the front end. The following method can be used to access session storage:
+
+sessionStorage.getItem(‘key’).
+
+Here, key refers to the key name in the key-value pair.
+
+We used it in the code to get the access token from session storage using the following:
+var access = sessionStorage.getItem('access-token');
+
+Next, we made a GET request to the back end and used the access token retrieved from session storage as an authentication header to access the data successfully.
