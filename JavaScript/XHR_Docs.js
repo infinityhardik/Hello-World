@@ -118,9 +118,6 @@ You must wait till XMLHttpRequest.readyState === 4.
 
 */
 
-
-
-
 /* 
 HTTP Request Methods
 In the previous segment, you sent data to the server using the POST method, one of the few HTTP methods. This segment will revisit the different HTTP request methods used to inform the server to act.
@@ -229,4 +226,110 @@ Syntax:
 
 xhr.open('DELETE', url);
 xhr.send(dataToSend); // dataToSend is the data to be sent to the server
+*/
+
+
+
+
+
+
+
+/* 
+HTTP Response Status Code
+
+HTTP response status codes are response codes predefined by a server when a client makes a request. These define what happened to the HTTP request made by the client.
+
+HTTP response codes are three-digit numbers, with the first digit signifying one of the 5 predefined standard classes of response, as shown below.
+
+_ X X >> First Digit _ Class of Response
+
+1 > Informational : Indicates that the server has received the request and is processing it.
+2 > Success : Indicates that the server has successfully processed the request.
+3 > Redirection : Indicates that the server has redirected the request.
+4 > Client Error : Indicates that the request made by the client has some error in it.
+5 > Server Error : Indicates that there is some error in server and it can't process the request.
+
+
+Here are some common HTTP response status codes:
+
+100: Continue
+
+200: OK
+
+201: Created
+
+301: Moved Permanently
+
+400: Bad Request
+
+404: Not Found
+
+415: Media Type Not Supported
+
+500: Internal Server Error
+
+502: Bad Gateway
+
+You must wait until the status code is 200.
+
+
+415 is the error code for 'Media Type Not Supported'. When you transfer some data from an application over the web, the data needs to be sent in a fixed format so that the receiver knows how to read and interpret the data.
+It is similar to sending data to someone in a box, so the data does not get changed. However,  you need to send the key to the box, so the person can open it and access the data. The definition of the encoding is the key so that the box of data can be opened.
+*/
+
+
+
+
+
+/* 
+HTTP Headers
+Do you remember the HTTP response status code 415 that you came across in the previous segment? As you can recall, error 415 indicates that the media type is not supported. This happens when you do not specify what format you are sending the data in. You are sending the JSON object from the client to the server, and the server is receiving this data, but the server is not aware of its format. You need to specify the format of this data explicitly. So, how can you specify the format? Well, you can do this with the help of headers.
+
+ 
+
+Clients and servers use HTTP headers to pass additional information to each other. 
+
+ 
+
+These headers are broadly classified into the following four categories:
+
+ 
+
+1. General headers
+
+The client and the server can use these, but they do not give any information about the content sent by the client or the server. Common examples are 'Date', 'Cache-Control' and 'Connection'.
+
+ 
+
+2. Request headers
+
+The headers sent by the client (browser) to the server are known as 'request headers'. These headers share with the server more information about the client (the version of software the client is using, the encoding type of response data that the client can accept) and information about the resource that the client is trying to request.
+
+ 
+
+3. Response headers
+
+The headers sent by the server to the client are known as 'response headers'. They contain more information about the content being served to the client or about the server itself (the number of API calls that the server will make, the amount of time that it will sustain a session for, etc.).
+
+ 
+
+4. Entity headers
+
+The headers that give more information about the content of the body of a message are known as 'entity headers'. These can be used in requests as well as responses.
+
+
+In the video above, you learnt how to use the setRequestHeader method on the XMLHttpRequest object to set the value for a header sent along with the request. This method must be used after the open() method has been invoked and before the send() method has been invoked. 
+
+Syntax:
+XMLHttpRequest.setRequestHeader(header, value);
+
+
+You also looked at the Content-Type header, one of the entity-headers that we used along with the request. You can read more about this header from this link. 
+
+For a JSON object, the correct format is 'application/json' with the default encoding format (charset) as UTF-8, as shown below.
+xhr.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
+
+Note that the setRequestHeader() method can be used multiple times in the code to set the values of different headers to be sent along with the request.
+
+
 */
