@@ -1,0 +1,30 @@
+<head>
+  <script src="index.js"></script>
+</head>
+<body>
+  <div id="country_data">
+    <p>Country / Country Code</p>
+  </div>
+  <script>
+    var xhr = new XMLHttpRequest();
+    function getCountry() {
+      xhr.open("GET", "https://api.openaq.org/v1/countries");
+      // Visiting the API link will give you the Object Response Text
+
+      xhr.send();
+      xhr.onreadystatechange = () => {
+        if (xhr.readyState === 4) {
+          var obj = JSON.parse(xhr.response);
+          console.log(obj);
+          obj.results.forEach((value, index) => {
+            document.getElementById(
+              "country_data"
+            ).innerHTML += `<p>${value.name} / ${value.code}<p>`;
+          });
+        }
+      };
+    }
+    // The getCountry() method is called explicitly.
+    getCountry();
+  </script>
+</body>

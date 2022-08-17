@@ -443,8 +443,6 @@ On the other hand, https://www.google.com is an absolute address, which informs 
 
 **Values stored in session storage cannot be accessed across different browser tabs. Session storage persists for that particular tab only; hence, it will not be available to the new tab**
 
-
-
 # Retrieving data stored in session storage
 
 We retrieved the access token from session storage and used it in the Authorization header to dynamically get data for the front end. The following method can be used to access session storage:
@@ -457,3 +455,42 @@ We used it in the code to get the access token from session storage using the fo
 var access = sessionStorage.getItem('access-token');
 
 Next, we made a GET request to the back end and used the access token retrieved from session storage as an authentication header to access the data successfully.
+
+# API Calls in a For Loop
+
+Making all the API calls in a for loop is a bit problematic due to security reasons. The browser thinks of multiple API calls arising from the same source as an application trying to slow down its performance by inundating it with many calls, which is quite similar to spamming a system. This is why a browser will block any such call.
+
+# Event-Driven API calls
+
+Event Example = "onClick".
+
+Event-Driven API calss form the backbone of modern JavaScript. Getting all the data for a particular web page in a single API call causes the web page to load slowly.
+
+Imagine Facebook loading all the data to appear on your home screen in a single go. This means all the posts and all the comments on the posts would be downloaded regardless of whether you want to read them or not.
+
+In this case, the amount of data consumed would be quite significant, and the page would take a lot of time to load if the internet speed is insufficient.
+
+Event-driven API calls are a solution because they fetch data only when required, thereby making the page load faster due to low data consumption.
+
+# Event-Bubbling
+
+Event bubbling occurs when there are nested elements. The idea is that if one element is nested inside another, like in our example where delete-btn and project-btn were nested inside div ( <div id = value.id>), their events get linked.
+
+Both the buttons and the div have some onClick property attached to them.
+This causes a problem when the inner event is triggered, i.e., when the onClick button of the nested button (delete -btn) is clicked on. This causes the onClick property of the div to be activated too.
+
+This happens because the div is the parent container of the button, and in DOM, if you click on the button, you are selecting the div too.
+
+This bubbling of events (for example, the onClick of the child triggering the onClick of the parent) is called event bubbling.
+
+The solution to such an event bubbling is to have a function that can limit the bubbling when this function is defined.
+
+Such a function already exists and is known as event.stopPropagation. This function causes the triggering to stop when this is defined.
+
+In the example project management app, we stated event.stopPropagation in the function called on the clicking of the Delete button. This would mean that when deleteBoard() is called, the first thing it does is - stop the event onClick and limit the effect of the click.
+
+# User Permission
+
+Handling permissions is done at two levels: front end and back end. Front-end permission handling means that the user will not get access to the User Interface of the website if they lack permissions and will not make API calls to get the required.
+
+However, this is done in conjunction with back-end permission checking in the industry, where the server does not send any data if the permissions are incorrect.

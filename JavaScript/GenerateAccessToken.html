@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      #container {
+        text-align: center;
+        padding-top: 10%;
+      }
+
+      #submit-button {
+        background: lightblue;
+        padding: 10px 40px;
+        margin-top: 30px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="container">
+      <h2>Access Token</h2>
+      <form id="form-container">
+        <label for="username">Name:</label><br />
+        <input id="username" type="text" placeholder="Enter your username" />
+        <br /><br />
+        <label for="password">Password:</label><br />
+        <input
+          id="password"
+          type="password"
+          placeholder="Enter your password"
+        />
+      </form>
+      <button
+        id="submit-button"
+        onclick="generateAccessToken(username,password)"
+      >
+        Generate Access Token
+      </button>
+    </div>
+    <script>
+      function generateAccessToken(username, password) {
+        if (username.value.length == 0 || password.value.length == 0) {
+          alert("Missing username and/or password!");
+        } else {
+          var currDate = new Date().toLocaleTimeString();
+          var stringToEncode = username.value + password.value + currDate;
+          var accessToken = window.btoa(stringToEncode);
+          alert("Access Token : " + accessToken);
+        }
+      }
+    </script>
+  </body>
+</html>

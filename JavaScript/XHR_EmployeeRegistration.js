@@ -1,5 +1,5 @@
 function registerEmployee(name, role){
-    var xhr = new XMLHttpRequest;
+    var xhr = new XMLHttpRequest();
     //console.log(name.value);
     //console.log(role.value);
     
