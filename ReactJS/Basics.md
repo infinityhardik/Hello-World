@@ -2,7 +2,7 @@
 
 After Node.js is successfully installed on your system, type the following command in your Command Prompt:
 
->**npm i -g create-react-app**
+> **npm i -g create-react-app**
 
 Here, npm stands for Node Package Manager, which gets installed while installing Node.js. Moreover, i stands for install, which is a command. You can also write install in place of i.
 
@@ -101,3 +101,63 @@ Following are the essential points to note about some files that you see inside 
 - It helps to render resolution-independent and SEO-friendly images.
 - It makes up the icon for your application and appears alongside the title in the browser tab.
 - It gets saved along with the bookmark.
+
+## Differences between JSX and HTML :-
+
+1. **Adjacent JSX elements must be wrapped in an enclosing tag.**
+
+You cannot return multiple elements while returning JSX from a function or a class. You can return only a single element. This is why you need to encompass all children elements within a parent element and return this parent element. In case you fail to do this, you’ll get a syntax error saying, “Adjacent JSX elements must be wrapped in an enclosing tag”. However, in HTML, you can return as many DOM elements as you want. You do not have any rule of returning a single element.
+
+Note that with the introduction to React 16, one can return an array consisting of multiple elements existing at the same level. These elements are separated from each other using a comma. Thus, one can write the following code snippet, which works fine in React 16:
+
+`return [<div>`Phone Directory`</div>,<button>`Add`</button>,<div><span>`Name`<span>, <br/><span>`Phone`</span></div>]`
+
+2. **Closing tag is required.**
+
+In JSX, you need to close both types of tags — opening-closing tags as well as self-closing tags. For an opening tag, you need to explicitly write a closing tag at the end. For a self-closing tag, you need to put a forward slash before the closing angular bracket. If you fail to do this, you’ll get a syntax error saying, “Expected corresponding JSX closing tag for <br>”.
+
+3. **JSX properties are not similar to HTML attributes.**
+
+Some attributes you use in HTML cannot be used as JSX properties. You can see the entire list of such attributes [here](https://reactjs.org/docs/dom-elements.html "Forwards to React Docs"). This is because all of the JSX code gets converted to JavaScript code at the end. You know that JavaScript has its own set of keywords. If you try to write these keywords or reserved words as JSX properties, it gets confusing to identify when the word is being used as a JavaScript keyword (or reserved word) and when it is being used as a JSX property. To make this distinction, use alternative keywords in JSX for those HTML attributes, which exist in JavaScript language.
+
+4. **Case sensitiveness.**
+
+React ‘reacts’ to cases that you use! It doesn’t allow you to write something in any case that you want. On the other hand, HTML syntax is not case sensitive. You can choose to write the div tag as `<DIV>, <div> or <Div>`. Well, can you do the same in React? A big NO.
+
+## {}
+
+Curly braces {} are used as a special syntax in React. This can be used to evaluate a JavaScript expression during compilation. **The expression can be a variable, a function, an object, an arithmetic calculation, logical evaluation, or any code snippet that returns some value.**
+
+All things inside Curly braces {} is treated as JavaScript Code.
+
+## React.createElement() method
+
+`React.createElement(element_name, element_properties, children);`
+
+**This is the JavaScript Code Syntax for writing up HTML inside React.**
+
+The first argument in this method is the name of the element to be rendered. This can be either your custom component or an HTML element. The second argument is the object that consists of property-value pairs that can be provided as attributes to this component or element. After these two arguments, you can pass an infinite number of children elements, which will be nested inside this main component or element. These children can, in turn, have other children elements nested inside them.
+
+The first argument is mandatory, while the rest of the arguments that follow are optional.
+
+Example about how JSX code gets converted to JavaScript code using React.createElement(). One such example is given below:
+
+JSX code:
+
+> `<div id="module"><p>ReactJS</p></div>`
+
+JavaScript code:
+
+> `React.createElement("div", {id: "module"},`<br> `React.createElement("p", null, "ReactJS")`<br/>`);`
+
+We cannot return multiple items for a function in JavaScript and hence following JSX expression:-
+
+> `<h1>Welcome to React</h1>` <br/> `<div>Hi</div>`
+
+gets converted to following JavaScript Code which is not possible : -
+
+> `return React.createElement("h1", null, "Welcome to React");` <br/> `return React.createElement("div", null, "Hi");`
+
+and hence we get an error saying _JSX Expressions must have one parent element_.
+
+Thus, whenever you use JSX to render DOM elements, the JSX code for the element gets converted to the React.createElement() method in JavaScript.
