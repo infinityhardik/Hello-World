@@ -24,3 +24,6 @@ ReactDOM.render(
     <span>Hello {firstname + ' ' + lastname} ! The total amount you need to pay for {numberOfIceCreams} ice-creams is Rs. {numberOfIceCreams * iceCreamPrice}</span>,
     document.getElementById('root')
 );
+
+
+// To be added to App.js

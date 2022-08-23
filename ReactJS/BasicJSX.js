@@ -15,3 +15,5 @@ ReactDOM.render(
     </div>, 
     document.getElementById('root')
 );
+
+// To be added to App.js

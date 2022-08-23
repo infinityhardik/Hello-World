@@ -46,3 +46,5 @@ ReactDOM.render(
     <script src="./config.js"></script>
 </body>
 */
+
+// To be added to App.js
