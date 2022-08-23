@@ -161,3 +161,96 @@ gets converted to following JavaScript Code which is not possible : -
 and hence we get an error saying _JSX Expressions must have one parent element_.
 
 Thus, whenever you use JSX to render DOM elements, the JSX code for the element gets converted to the React.createElement() method in JavaScript.
+
+## Rendering Elements into the DOM
+
+You can have as many root nodes inside your application as you want inside the _index.html_ file. One root node suffices in a small application, but you can have multiple root nodes depending upon the needs of your application.
+
+When do you need to have multiple root nodes inside an application?
+
+Can you recall that one of the advantages of using React is that it doesn’t make any assumption about your technology stack? Imagine that you want to ship only some features in React in an application, which is not primarily built using React. These features are spread across your entire application and are written at multiple places inside the application. Now, how will you achieve this without touching the rest of your independently existing code? This can be possible only when you can choose selective pieces of your existing code to be shipped, convert them into React, and then plug these new React code pieces back into different places inside your application. Having multiple root elements help you achieve this and, thus, redefine your application using React. Each root node can contain multiple React components, and these root nodes can be plugged into different places inside your application.
+
+Syntax of the ReactDOM.render() method:
+
+`ReactDOM.render(argument_1, argument_2);`
+
+- _argument_1_ tells WHAT to render.
+- _argument_2_ tells WHERE to render.
+
+Notes:
+
+1. There must be two arguments in the ReactDOM.render() method.
+
+2. The first argument of the ReactDOM.render() method tells you what is to be rendered. This does not mean that only one element can be rendered in the first argument. Multiple elements can be rendered by enclosing them inside a parent div container. Also, this argument does not necessarily have to be a component. This argument can also take JSX code directly.
+
+3. The second argument of the ReactDOM.render() method can be anything that specifies a location on the DOM, where the element(s) in the first argument need to be rendered.
+
+4. Note that the second argument doesn’t necessarily have to be accessed using the _document.getElementById_ method. It can be any method as long as it gives a location on the DOM where the first argument needs to be rendered.
+
+# Components
+
+_Ex : Facebook News Feed posts containing the same structure of Like, Post and Comment._
+
+React follows a Component based approach. **Component refers to independent and reusable piece of code that can be plugged in anytime and anywhere**. They are like JavaScript functions >> They accept arbitrary inputs called props and _return_ react elements describing what should appear on the screen.
+
+_Thus Components are just JavaScript's way of writing independent, reusable, and dynamic code._
+
+There are two types of components in React — **functional components** and **class components**. As the names suggest, functional components are written in the form of functions whereas class components are written in the form of classes.
+
+Code Snippet 1 = Class Component:
+`render() { return ( <div>Hello World</div> );}`
+
+Code Snippet 2 = Functional Component:
+`return ( <div>Hello World</div> );`
+
+A class component must have a _render()_ function. This is because a class component extends from the Component base class. This is not the case with functional components. Since Code Snippet 1 has the render function, it belongs to a class component. On the other hand, since Code Snippet 2 does not have the render function, it belongs to the functional component.
+
+#### Notes for Components :-
+
+Notes:
+
+1. **A component’s name must start with a Capital Letter** in order to distinguish between the predefined HTML elements and the custom elements (components) created by users. An example can be:
+   `MyComponent`
+
+   Thus, **HTML elements must start with lowercase letters** and components must start with Capital letters so that the JSX can distinguish between custom elements, i.e., Components and predefined HTML Elements.
+
+2. **A class component must extend from a base class named _Component_.** For this, you also need to include Component as a named import from the ‘react’ library. A class component must always have a _render() function_.
+
+   `import React, {Component} from 'react';`
+
+   `class MyComponent extends Component {`
+   `render() {// code here}`
+
+   `}`
+
+3. **A component must always return something.**
+
+   _This returned value is the content rendered into the DOM; it replaces the component's name._
+
+   In case you miss the return statement in a functional component, you will get an error saying, "Nothing was returned from render. This usually means a return statement is missing.". On the other hand, if you miss a return statement inside the render() function in a class component, you get an error saying, "Your render method should have a return statement".
+
+   If you do not wish to return anything, you can return null from the component, as written below:
+
+   `return null;`
+
+   In any case, the return statement needs to be mandatorily written, no matter whether you wish to return anything or not.
+
+4. In order to reference a component written in a separate file, you need to first export the component from the file where it has been defined and then import the component in the required file where it needs to be used.
+
+5. A component can have a **file extension as .js or .jsx.**
+
+6. _In the case of components where the file extension is .js or .jsx, the extension is not required to be explicitly mentioned while writing the import statement._
+
+   For example, you can skip mentioning the file extension while writing the import statement when the Header file has the extension ‘.js’ or ‘.jsx’.
+
+   `import Header from './Header';`
+
+   However, **for all other files, the extension should also be mentioned along with the file name while writing the import statement.**
+
+   Let’s say there’s a logo file with a .svg extension; you would need to mention the file extension when importing the logo file, as written below:
+
+   `import logo from './logo.svg';`
+
+In React, you should write reusable code snippets; this is one of the recommended coding guidelines in software development. Thus, using components saves you the trouble of rewriting redundant code at multiple places. This is why React is all about components.
+
+Components are self-contained; you can save any information that you receive inside the component instance directly without leaving the component. _Components are reusable because it is no longer required to copy and paste the HTML code at multiple places._ You can simply create a component and call it at multiple places while changing its content dynamically. Components are customisable. Unlike predefined HTML elements, you can define your components in the way you want them to get rendered into the DOM.
