@@ -254,3 +254,57 @@ Notes:
 In React, you should write reusable code snippets; this is one of the recommended coding guidelines in software development. Thus, using components saves you the trouble of rewriting redundant code at multiple places. This is why React is all about components.
 
 Components are self-contained; you can save any information that you receive inside the component instance directly without leaving the component. _Components are reusable because it is no longer required to copy and paste the HTML code at multiple places._ You can simply create a component and call it at multiple places while changing its content dynamically. Components are customisable. Unlike predefined HTML elements, you can define your components in the way you want them to get rendered into the DOM.
+
+# Styling
+
+Styling makes a website look better. It is used to give a better appearance to the DOM elements. This is analogous to how painting the walls of your house makes the house look better.
+
+### Notes :-
+
+## **Inline Styling**
+
+**_Approach 1_ : Directly writing style alongside JSX**
+
+> `<div style={{textAlign: 'center', padding: 20, background: '#000', color: '#fff', textTransform: 'uppercase'}}> Phone Directory </div>`
+
+**\_Approach 2\_\_ : Moving style as constant object**
+
+> `const headerStyle = {textAlign: 'center', padding: 20, background: '#000', color: '#fff', textTransform: 'uppercase'}};`
+
+> `<div style={headerStyle}> Phone Directory </div>`
+
+1. It allows you to write styles in the same line with the element or component. This is why it is called ‘inline’ styling.
+
+2. The style property is used with the element or component to be rendered into the DOM.
+
+3. The _style_ property accepts a **JavaScript object** enclosed in curly braces.
+
+4. **Two curly braces are used with the style property** — one to evaluate the expression inside the JSX code and the other to represent a JavaScript object, which is taken as input by the style property.
+
+   `<div style={{}}> Phone Directory </div>` ​​​
+
+5. The property names look like CSS property names, but they are not exactly like them. These names are actually JavaScript identifiers; they can be considered as the _keys (or properties) of a JavaScript object_.
+
+6. **The property names must be written in camelCase**. Unlike CSS, hyphens are not allowed in JSX because the JSX code gets converted to JavaScript code, and hyphens are not allowed in JavaScript identifiers.
+
+   `<div style={{textTransform: 'uppercase'}}> Phone Directory </div>`
+
+   This is the reason why _textTransform_ is written in camelCase in JSX unlike _text-transform_ in CSS. If you fail to follow this, you will get an error saying “Uncaught SyntaxError: Inline Babel script: Unexpected token”.
+
+7. The property values look like CSS property values, but they are not exactly like them. These values can be considered the values corresponding to the keys (or properties) in a JavaScript object. Since all the values in JavaScript must be of a valid datatype, care must be taken regarding each value correctly mapping to a valid data type in JavaScript.
+
+   `<div style={{background: '#000'}}> Phone Directory </div>`
+
+   This is why '#000' is written inside quotes, because it corresponds to a string value. In CSS, you must write it without quotes to make it work.
+
+   If quotes are not there, it is considered to be a variable by Javascript since all code gets converted into JavaScript Code. For Numbers, quotes are not required.
+
+8. All property-value pairs are separated using the comma operator. The reason is that the style property accepts a JavaScript object where a comma should be used in contrast to a CSS style, where a semicolon is used instead.
+
+9. When a component or element is styled by moving out style as a constant object, only one pair of curly braces is used in the style property. Refer to Approach 2 of Inline Styling.
+
+### **External Styling**
+
+1. Write all the styles in an external stylesheet. **This is similar to writing external CSS while using proper selectors.**
+
+2. Import this stylesheet in the file where the component or element is defined on which you want to apply the given style. Note that since the extension of a stylesheet is .css (not equivalent to .js or .jsx), you need to specify the file extension while writing the import statement for a stylesheet.
