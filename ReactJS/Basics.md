@@ -102,6 +102,10 @@ Following are the essential points to note about some files that you see inside 
 - It makes up the icon for your application and appears alongside the title in the browser tab.
 - It gets saved along with the bookmark.
 
+# JSX
+
+JSX is an HTML looking syntax, but it is actually an XML extension to ECMAScript specification. Thus,instead of using pure JavaScript for building DOM elements, you can use JSX, which offers flexibility to developers to use the familiar syntax, viz HTML.
+
 ## Differences between JSX and HTML :-
 
 1. **Adjacent JSX elements must be wrapped in an enclosing tag.**
@@ -308,3 +312,44 @@ Styling makes a website look better. It is used to give a better appearance to t
 1. Write all the styles in an external stylesheet. **This is similar to writing external CSS while using proper selectors.**
 
 2. Import this stylesheet in the file where the component or element is defined on which you want to apply the given style. Note that since the extension of a stylesheet is .css (not equivalent to .js or .jsx), you need to specify the file extension while writing the import statement for a stylesheet.
+
+# Rendering Content Dynamically
+
+The **map() method** in JavaScript creates a new array after calling the given function on each array element in order. Note that it does not change the original array.
+
+JavaScript’s map() method can be used to iterate over an array and inject data into the React components or elements dynamically. You don’t need to hard-code the data inside each component. This is one of the major reasons why React refers to its components as ‘reusable’ entities. Also, this is yet another application where curly braces are used to write some JavaScript code alongside JSX.
+
+**Notes:**
+
+1. The entire map() method is written inside curly braces since it is JavaScript code that needs to be evaluated. Map() is a JavaScript function and returns an array after applying the given function to each element of the array.
+
+   `{ arrayNameToIterateOver.map( //code here ) }`
+
+2. In React, you need to give a unique key to each element being rendered into the DOM. In case you fail to do this, you will get a warning saying, _“Each child in an array or iterator should have a unique “key” prop”._
+
+   To overcome this, you need to first assign each array element with a unique value for a property. Let’s say the property is _id_ ,and the unique values are 101 and 102, corresponding to the individual array elements.
+
+<code> 
+let demoArray = [
+   {
+      id: 101, // unique
+      prop1: "SomeValForProp1",
+      prop2: "SomeValForProp2"
+   },
+   {
+      id: 102, // unique
+      prop1: "SomeOtherValForProp1",
+      prop2: "SomeOtherValForProp2"
+   }
+];
+</code>
+
+Secondly, you need to assign this property (_id_ here) to the property key of the outermost element inside the map method.
+
+<code> {
+demoArray.map(arrayElement => {
+`return <div key={arrayElement.id}></div>`
+})
+}</code>
+
+The concept of unique keys helps in distinguishing between different elements that are rendered into the DOM in React.
