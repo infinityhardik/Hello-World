@@ -353,3 +353,77 @@ demoArray.map(arrayElement => {
 }</code>
 
 The concept of unique keys helps in distinguishing between different elements that are rendered into the DOM in React.
+
+# Props
+
+**Props stands for _properties_.** It help you to **pass values from a parent component to a child component so that they can be accessed within the child component.**
+
+### **Props in a functional component:**
+
+A functional component accepts a **parameter** called props from the parent component. This parameter is an object that holds all the properties passed from the parent component to the child component. In place of props, you can use any other parameter name too.
+Example:
+
+```
+const Organization = function(props) {
+   return (
+      <div>
+         <h1>{props.name}</h1>
+   <h3>{props.tagline}</h3>
+   </div>
+   )
+}
+
+<Organization name="UpGrad" tagline="Building Careers of Tomorrow"/>
+```
+
+### **Props in a class component:**
+
+The properties passed from the parent component can be accessed using **this.props** keyword. Note that in class components, you need to use the keyword props only, unlike, in functional components where any parameter name can be used to represent the props of the component.
+
+Example:
+
+```
+class Organization extends Component {
+   render() {
+      return (
+         <div>
+            <h1>{this.props.name}</h1>
+            <h3>{this.props.tagline}</h3>
+         </div>
+       )
+   }
+}
+
+<Organization name="UpGrad" tagline="Building Careers of Tomorrow"/>
+```
+
+A class needs to have a predefined keyword that can hold all the properties passed from the parent component to the child component. This predefined keyword is props. Thus, all the properties that are passed to a class component can only be accessed using 'this.props' keyword.
+
+# Event Handling
+
+**An Event is an action to be taken as a result of user interactions. An event handler is a method to be called when an event occurs.** A programmer can define a series of steps inside an event handler, which can be followed when the specified event occurs.
+
+Notes:
+
+1. An event name should follow **camelCase**.
+2. It is good to prefix event handlers with **on**, such as _‘onSubmitOrder’_, or suffix them with the **handler**, such as _‘submitOrderHandler’_. This is done to clarify what these handlers do and what events they are attached to.
+
+# Naming Conventions in React
+
+### **className, onClick, CustomImage, onClickHandler**
+
+1. The first word is the **CSS selector** for an element.
+
+2. The second word provides the **on-click event** to an element.
+
+3. The third word is used as the name of the custom image **component** being created.
+
+4. The fourth word is used as the on-click **event handler** for an element.
+
+_className_ and _onClick_ are correctly written in camelCase.
+
+_CustomImage_, which is the name of a component, has its first letter capitalised, which is correct.
+
+_onClickHandler_, which is the name of a method, starts with a lowercase letter, which is considered a good coding principle.
+
+All the words are correctly written as per the naming conventions in React.
