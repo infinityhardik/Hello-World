@@ -24,7 +24,7 @@ class AddSusbscriber extends Component {
         e.preventDefault();
         this.props.addSubscriberHandler(this.state);
         this.setState({ id: 0, name: '', phone: ' ' });
-        this.props.history.push("/");
+        // this.props.history.push("/");
     }
 
     render() {
