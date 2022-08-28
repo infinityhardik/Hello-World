@@ -1,0 +1,81 @@
+.main-directory-container {
+    padding: 20px;
+}
+
+.heading-container {
+    text-align: center;
+    margin: 20px 0 40px 0;
+}
+
+.heading-container h2 {
+    color: #0b5345;
+}
+
+.create-directory-container {
+    margin-bottom: 20px 0;
+}
+
+.input-box {
+    width: 50%;
+    min-width: 70%;
+    margin-top: 5px;
+    padding: 15px 15px;
+    margin-bottom: 20px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 15px;
+}
+
+.custom-btn {
+    margin-top: 10px;
+    padding: 10px;
+    border: none;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    cursor: pointer;
+    outline: none;
+    float: right;
+    background: #d3d3d3;
+}
+
+.scorecards-container {
+    width: 90%;
+    display: grid;
+    margin: 0 auto;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    grid-gap: 20px;
+}
+
+@media only screen and (min-width: 400px) {
+    .scorecards-container {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media only screen and (min-width: 850px) {
+    .scorecards-container {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+}
+
+.card {
+    background: #f9f9f9;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    margin: 15px 0;
+}
+
+.card:hover {
+    box-shadow: 0 4px 5px rgba(0, 0, 0, 0.2);
+}
+
+.card span {
+    padding: 8px;
+    font-size: 17px;
+    color: #666;
+    letter-spacing: .05em;
+}

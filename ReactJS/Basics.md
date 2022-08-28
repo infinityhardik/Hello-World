@@ -427,3 +427,62 @@ _CustomImage_, which is the name of a component, has its first letter capitalise
 _onClickHandler_, which is the name of a method, starts with a lowercase letter, which is considered a good coding principle.
 
 All the words are correctly written as per the naming conventions in React.
+
+# State
+
+**State is INTERNAL and controlled within a component, unlike props, which are EXTERNAL and are controlled by a parent component _(component that renders it)_.**
+
+**A change in state calls the render() method again.**
+
+Render() method is present only inside a class component because a class component extends from the Component class, which acts as the base class. This is the reason why class components are termed _‘stateful’_. This also concludes that functional components cannot contain state because they do not extend from the Component base class and, thus, do not have any render() method. This is why they are termed _‘stateless’_.
+
+Example : Updating the State of Value inside element using input in Add Subscriber for Phone Directory App.
+
+**Notes:**
+
+1. State can be **maintained inside a class component only**.
+
+2. State is **always initialised inside the class constructor**.
+
+3. In case you define the constructor of a class, you need to call the _super()_ method in the first statement of the constructor definition. This method calls the constructor of the parent class.
+
+4. **To set the state**, you must always use the **setState() method and must never directly manipulate the application’s state**. However, setState() should never be called inside the constructor.
+
+5. Whenever **state is changed, the render() method of the class is called again.** >> This is evident when logging the data into the Console.
+
+> Constructor is the only place where in a state can be initialised. After that, anywhere in the program we have to use the setState() method to set the state. Otherwise we will get an error.
+
+# Component Lifecycle
+
+Component life cycle in React varies from one process to another, and there are a total of three processes — Mounting, Updating, and Unmounting.
+
+- **Mounting** refers to the instance of a component being created and inserted into DOM.
+
+- **Updating** denotes the instance of a component being updated by props or state.
+
+- **Unmounting** refers to the component being removed from DOM.
+
+Inside the Mounting process, a component’s life cycle is defined by the following methods, which are called in the given order:
+
+1. **constructor()**
+
+2. **render()**
+
+3. **componentDidMount()**
+
+**A change in the state leads to the render() method being called again.**
+
+# Smart vs Dumb Components
+
+A **Dumb (aka Presentational) component only presents data on the DOM**. Only UI-based and is mainly responsible to present something on the DOM. Once that is done, the Component is done with it. It rarely has its own State. Whenever it has a State, it will only have a UI State.
+
+On the other hand, a **Smart (aka Container) component provides data and logic to the dumb components.**
+It generally wraps up other components by passing data and providing logic to them. It is like a Controller in your MVC Architecture > (Model-View-Controller (MVC) is an architectural pattern that separates an application into three main logical components: the model, the view, and the controller.)
+
+**_Thus, Dumb components describe how things look, whereas Smart components describe how things work._**
+
+# Routing
+
+Routing is the process that helps in loading partial content, making it a dire need for building SPAs. Based on the URL that a user visits, specific content is loaded on the page, which helps in displaying different content to the users without any need for the page refresh. This is when the users get to see the entire application in a single page though it consists of multiple pages.
+
+To implement Routing in your application, you’ll be using a node package called ‘react-router-dom’. This package provides React components to simulate server-side router handling. This package offers a BrowserRouter component, which you’ll use in your application.
