@@ -1,3 +1,9 @@
+# React JS
+
+React uses the concept of virtual DOM to speed up its performance. Using virtual DOM, we can only update the part that has been changed in Real DOM, not the whole document.
+
+Data is handled in React using **State and Props**.
+
 # Installation
 
 After Node.js is successfully installed on your system, type the following command in your Command Prompt:
@@ -358,6 +364,8 @@ The concept of unique keys helps in distinguishing between different elements th
 
 **Props stands for _properties_.** It help you to **pass values from a parent component to a child component so that they can be accessed within the child component.**
 
+> **Information is exchanged between components using Props.**
+
 ### **Props in a functional component:**
 
 A functional component accepts a **parameter** called props from the parent component. This parameter is an object that holds all the properties passed from the parent component to the child component. In place of props, you can use any other parameter name too.
@@ -486,3 +494,107 @@ It generally wraps up other components by passing data and providing logic to th
 Routing is the process that helps in loading partial content, making it a dire need for building SPAs. Based on the URL that a user visits, specific content is loaded on the page, which helps in displaying different content to the users without any need for the page refresh. This is when the users get to see the entire application in a single page though it consists of multiple pages.
 
 To implement Routing in your application, you’ll be using a node package called ‘react-router-dom’. This package provides React components to simulate server-side router handling. This package offers a BrowserRouter component, which you’ll use in your application.
+
+# React Hooks
+
+What is a Hook? A Hook is a special function that permits you to ‘hook into’ React States and enable you to get more out of the lifecycle features (ex: componentDidMount(), componentDidUpdate()).
+
+When would you take advantage of a Hook? If you write a functional component and would like to feature a state to that, you had to convert it to a Class component earlier.
+
+> Class components take prop as an input using which they can update the state. This is the reason why they are known as stateful components.
+
+> We can manage the state through class components.
+
+The differences between functional-based components and class-based components are :
+
+| Functional Components                                                    | Class Components                                                                                |
+| ------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------- |
+| These take props as input and return the JSX.                            | These take input as a prop and also manage the state.                                           |
+| These are known as stateless components.                                 | These are known as stateful components.                                                         |
+| You did not have the access to lifecycle hooks in functional components. | You can access the lifecycle hooks in the class components.                                     |
+| You cannot write logic in it because they are stateless.                 | You can have logic in this because you can manage the states inside the class-based components. |
+
+Considering the above-mentioned differences, you will observe that you cannot do much with functional components. To fill this gap, React Hooks were introduced. Using the features of Hooks, you can manage the state. Moreover, hooks replace lifecycle hooks.
+
+**Rules for Hooks** :-
+
+1. Only call Hooks from React functions
+2. Do not call Hooks from regular JavaScript functions. Instead, you can:
+
+- Call Hooks from React function components, and
+- Call Hooks from custom Hooks.
+
+# useState() Hook
+
+**useState** is a Hook that allows you to add the React state to function components. Using the useState() hook inside the function components, you can update/get the current state of the application.
+
+**The useState() hook returns an array containing two parameters: The current state and the method used to update the state.**
+
+Ex of useState() hook:
+
+```
+const [currentState, setCurrentState] = useState([initialState]);
+
+// We are storing the outcome of useState Function in a variable using const. As the outcome is returned as an array, we are destructuring the array to denote the current state variable and the method to set it.
+```
+
+**How will useState work? Which functions will it carry out?**
+
+The useState declares a ‘state variable’, and it can be another way to ‘preserve’ some values between the function calls. Recall the functionalities that this.state performs in a class. Imagine that useState provides the same capabilities to you easily. In general, variables ‘disappear’ once the function exits. However, the state variables are preserved by React.
+
+**What will we pass to useState as an argument?**
+
+The sole argument to the useState() Hook is the initial state.
+
+**What will useState return?**
+
+It returns a combination of values: a current state and a function that will update it. Recall the this.setState functionality, and it will become easy to correlate what useState would return
+
+**How to use this React Hook**
+You pass the initial state to this function (useState), and it returns a variable with the current state value and another function to update this value.
+
+For example, this tiny code snippet will render a button, which, when clicked, will update the counter variable; this is done using useState.
+
+```
+const UpdateStateVar = () => {
+  const [counter, setCounter] = useState(19)
+  const handleClick = () => setCounter(counter + 1)
+  return (
+    <div>
+      Button has been clicked {counter} no. of times!
+      <div>
+        <button onClick={handleClick}>Click me! </button>
+      </div>
+    </div>
+  )
+}
+```
+
+Here, useState(19) is the initial state, and you invoke the updater function that is returned by the useState invocation: const [valueOfTheState, updaterFunction], i.e., const [counter, setCounter].
+
+
+Ex Question : What does the following code snippet do?
+```
+const [x, y] = React.useState('');
+  const handleChange = event => {
+	y(event.target.value);
+  };
+  return (
+	<div>
+  	<h1>Blogging</h1>
+
+  	<label htmlFor="search">Search: </label>
+  	<input id="search" type="text" onChange={handleChange} />
+
+  	<p>
+    	Searching for <strong>{x}</strong>.
+  	</p>
+  	<hr />
+
+  	<List list={articles} />
+	</div>
+  );
+};
+```
+It displays the current state and updates it within the App component’s event handler. > Correct, in the code snippet, we are updating the state with the event value. So, it displays the current state and updates it within the App component’s event handler.
+
