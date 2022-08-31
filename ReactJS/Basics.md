@@ -364,7 +364,8 @@ The concept of unique keys helps in distinguishing between different elements th
 
 **Props stands for _properties_.** It help you to **pass values from a parent component to a child component so that they can be accessed within the child component.**
 
-> **Information is exchanged between components using Props.**
+> **Information is exchanged between components using Props.** > **Props is an Object** It contains properties which can be accessed using dot (.) operator.
+> To use them directly we can destructure them inside function parameters using curly braces. ({propertyName1, propertyName2, .....}) instead of using props.propertyName1 to access it inside the function.
 
 ### **Props in a functional component:**
 
@@ -572,8 +573,8 @@ const UpdateStateVar = () => {
 
 Here, useState(19) is the initial state, and you invoke the updater function that is returned by the useState invocation: const [valueOfTheState, updaterFunction], i.e., const [counter, setCounter].
 
-
 Ex Question : What does the following code snippet do?
+
 ```
 const [x, y] = React.useState('');
   const handleChange = event => {
@@ -596,5 +597,84 @@ const [x, y] = React.useState('');
   );
 };
 ```
+
 It displays the current state and updates it within the App component’s event handler. > Correct, in the code snippet, we are updating the state with the event value. So, it displays the current state and updates it within the App component’s event handler.
 
+# Filter() Method
+
+Use Filter() method to Delete.
+
+# useEffect() Hook
+
+### Side Effects in React
+
+- **Side effects** are those that affect things that are outside the scope of the present function that is being executed.
+- They can be data fetching, manually updating the DOM, updating title of the Page, making an API call, etc. A functional React component uses props or states to calculate the output.
+- If the functional component performs some actions that does not target the output value, then these actions or activities are called side effects.
+
+**What is the function of useEffect?**
+
+Using this Hook, you inform React that your component needs to carry out some activity after rendering. React will remember the function that you passed (we will refer to it as our ‘effect’) and call it later after performing the DOM updates.
+
+The useEffect hook takes two parameters, a Callback Function and an optional Dependency List.
+
+**How to use this React Hook?**
+
+Let’s take a simple example code here to recall how useEffect works. Consider the following code snippet:
+
+```
+const { useEffect, useState } = React
+const counter = () => {
+  const [count, setCount] = useState(0)
+  const [name, setName] = useState('Aishwarya')
+  useEffect(() => {
+    console.log('Hello! ${name} You have clicked ${count} times')
+  });
+
+  return (
+    <div>
+      <p>Hello! {name} You have clicked {count} times</p>
+      <button onClick={() => setCount(count + 1)}>
+        Click here
+      </button>
+      <button onClick={() => setName(name === 'Aishwarya' ? 'Rai' : 'Aishwarya')}>
+        Flip Name
+      </button>
+    </div>
+  )
+}
+ReactDOM.render(<counter />, document.getElementById('app'))
+```
+
+Here, the function runs when the component is first rendered and re-renders or updates after that. React first updates the DOM and then calls any function passed to useEffect(). This happens without halting the UI rendering, which makes our code run and render faster.
+
+Example : -
+
+```
+function Example() {
+  const [x, y] = useState(0);
+
+  useEffect(() => {
+	document.title = `You have clicked ${x} times`;
+	});
+  return (
+	<div>
+  	<p>You have clicked {x} times</p>
+  	<button onClick={() => y(x + 1)}>
+    	Click Here!
+  	</button>
+	</div>
+);
+```
+
+The useEffect hook is present in the snippet above, which means that it will re-render when the update is made. So, whenever you click the button, it will update the number of clicks.
+
+If we want to have a Dependency for Use Effect Hook, then use the syntax >
+
+```
+useEffect(() => {
+  console.log('How many times?')
+}, [])
+```
+
+In the Array mention the Dependency variables. Since an empty array is passed, the effect will be executed only once.
