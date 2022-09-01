@@ -678,3 +678,64 @@ useEffect(() => {
 ```
 
 In the Array mention the Dependency variables. Since an empty array is passed, the effect will be executed only once.
+
+# Forms & Routing
+
+In the module on HTML, you learnt how to take input from the user using forms. React offers the forms on similar lines. The only difference is that in HTML, form data was handled by the Document Object Model (DOM), whereas in React, the data entered by the user will come into effect when you update the state. This is because in the React, State is the ‘single source of truth’.
+
+In **HTML, forms are handled using DOM** (Document Object Model), whereas in **React forms are handled using Components**. _All the Data which is associated with the forms is stored in the State of the Components._
+
+React forms are the same as HTML forms. However, in React, the state is stored in the component's state property.
+
+_The components in a React form are thus unable to change their state directly. Their input is managed by a JS function that has direct access to the details submitted by the user in the form._
+
+Example :-
+
+```
+<form>
+    <label for="username">Name</label>
+    <input type="text" name="username" id="username" placeholder="Enter Name..">
+ </form>
+```
+
+This form has the default HTML form behaviour in which the user redirects to the new page while the user submits the form.
+
+On the other hand, in React, this will work, but the standard way to handle the form data is using the JavaScript function, and this leads us to the concept of controlled components.
+
+**Controlled components:**
+
+In HTML, the form elements maintain their own state and update the data based on the user input. In React, the mutable state is typically kept in the state property of the components and is only updated with updating the state.
+
+_Thus, an input form element in React whose value is controlled by React in such a manner that the component that renders a form also controls what happens in that form on the subsequent user input can be called a controlled component._
+
+> Mutable is a type of variable that can be changed. In JavaScript, only objects and arrays are mutable, not primitive values. (You can make a variable name point to a new value, but the previous value is still held in memory.
+
+Example Form using Class Components :-
+
+```
+A simple example form would be as follows:
+
+class Form extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { username: '' };
+  }
+  changeEventHandler = (event) => {
+    this.setState({username: event.target.value});
+  }
+  render() {
+    return (
+      <form>
+      <h1>Hello There!{this.state.username}</h1>
+      <p>Can I know your name?</p>
+      <input
+        type='text'
+        onChange={this.changeEventHandler}
+      />
+      </form>
+    );
+  }
+}
+
+ReactDOM.render(<Form />, document.getElementById('root'));
+```
