@@ -947,3 +947,115 @@ The main reason for building the custom hook is that you can extract the compone
 Component Logic refers to a logic we can use again and again across components rather than repeating them.
 
 With Custom Hooks, We can extract the logic of function and make it reusable across the application. This will enable us to have more abstraction in our application.
+
+# Testing
+
+For writing the test case in jest, you only need to write the test() method.
+
+The test() method accepts the following two parameters:
+
+1. Name of the test
+2. Callback function > In callback function , you call the function that you want to test and then compare the results using the expect() method.
+
+Refer to the following code to gain more insight into this:
+
+```
+function add(a,b){
+    return a +b;
+}
+
+test("Addition of two numbers",()=>{
+    const actualResult = add(5,10);
+    const expectedResult =15
+    expect(actualResult).toBe(expectedResult);
+})
+```
+
+In this example, if the expectedResult is equal to the value obtained by calling in the add, then the test case will pass; otherwise, an error will be thrown with a message that the expected value does not match with the value that you obtain from the function.
+
+# Hooks Usage
+
+1. useEffect :
+   Whenever we want to make Back-end calls for Component/Data Loading using API from the server.
+
+2. useState :
+   For maintaining the state of the Input field.
+
+3. useHistory :
+   For Redirection to other Pages.
+
+4. useDispatch :
+   For maintaining an Application level state.
+
+# Graded Questions
+
+1. The useState() hook allows you to manage the state in the functional components.
+2. `<input type="file" /> ` It is not possible to have file input as a controlled component in React, as its value can only be set by the user, and not programmatically. Hence, it is always used as an uncontrolled component.
+3. Pure Functions : > Given the same input, pure functions will always return the same output. No matter where and how many times you call a pure function with a given input, it will always return the same output. > Pure functions produce no side effects. if you are not consuming the return value of a pure function, then the function is as good as a no-op.
+4. Redux contains a state container known as store, which is used to update the state. And, this store can be accessed from anywhere in the application. This makes the store a global entity in Redux.
+5. A reducer must always be a pure function. > As reducer is a pure function, and hence, it does not have an internal state that could potentially have side effects. Hence, it should not make API calls, as this would constitute a side effect. > A reducer generates changes to the state by returning a new state object that combines a copy of the old state and the new changes applied on top of it.
+6. Enzyme : It is possible to render a component and test its props and state. > Enzyme can be used to render the entire component tree down to individual DOM nodes. > It is possible to access individual nodes within a component tree that is rendered by Enzyme using the CSS selectors.
+7. In a functional-based component, we cannot access the lifecycle hook. No, we can not access the lifecycle methods in functional components. Functional components are known as the stateless components.
+8. Consider the code snippet given below.
+
+```
+import { useEffect } from 'react';
+
+function SayHello({ name }) {
+  const message = `Hello, ${name}!`;
+
+  useEffect(() => {
+	document.title = 'Greetings page';}, []);
+
+  return <div>{message}</div>;
+}
+```
+
+> `document.title = 'Greetings page';}, []);`
+> The first parameter of the useEffect hook is the callback function, which is executed every time the dependency is updated.
+
+9. React supports client-side rendering as well as server-side rendering. In such a case, the initial rendering is generally done on the server. The HTML rendered by the server contains the UI, and once all the scripts are loaded, the components' event handlers are set up. Whether it is client-side or server-side, the final code is converted into JavaScript and is run on the browser.
+
+10. Which of the following hooks can be used to manage state in functional React components?
+
+    > The useState() hook allows you to manage the state inside the functional components.
+    > The useReducer() hook is an alternative to the useState() hook and is used to implement state management using Redux-style reducer functions.
+
+11. What will be the output of the following code snippet?
+
+```
+function Ticker() {
+  const x = 0;
+  const [tick, setTick] = useState(0);
+  useEffect(() => {
+    setTimeout(() => {
+      setTick(tick + 1)
+    }, 1000)
+  }, [x])
+  return (
+    <div>{tick}</div>
+  );
+}
+```
+
+The tick increments to one and then stops.
+
+When the component renders for the first time, the tick displayed will be zero, as it has been initialised with zero. The setTimeout will then execute after a second, changing the value of the tick to one, which will be displayed. However, the useEffect hook will not be executed any more, as the dependency does not change, and as a result, the tick will remain one.
+
+12. What will be the output of the following code snippet?
+
+```
+function Ticker() {
+  const [tick, setTick] = useState(0);
+  useEffect(() => {
+    setTimeout(() => {
+      setTick(tick + 1)
+    }, 1000)
+  })
+  return <div>{tick}</div>;
+}
+```
+
+The tick keeps incrementing by one after every second.
+
+In this case, the useEffect hook gets executed every time the component is re-rendered, which makes the setTimeout execute every second. This leads the timer to keep incrementing by one indefinitely.
