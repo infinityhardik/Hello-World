@@ -913,3 +913,37 @@ The useReducer hook takes two parameters and returns the current state and the d
 `const [state,dispatch] = useReducer(TotalSubscribersReducer,{count:0})`
 
 As per the official ReactJS definition, useReducer is an alternative to the useState. It accepts a reducer of type (state and action) and returns the current state along with the dispatch method. A reducer returns the new state based on the action.
+
+# Redux
+
+It is a Framework used for **State Management** of entire Application.
+
+Components > Dispatch the Action > Action contains the Information > Reducer : Reducer is just a pure function, which receives the old state and action as an input and returns an updated state > Updated State is given to the State Container > Subscription Model is connected to Components which will have updated state based on the Container State.
+
+Flow of Redux >
+
+In Redux, state containers store the entire application’s state. As you already know, in React, there are components, which may want to update the state or get the current state. So, to update the state in React, components dispatch the actions containing only information, not based on any logic as to how to update the state container. The actions are fed to the Reducer, which checks the type of information provided in the actions. The Reducer is just a function that receives the actions and the old state as an input and returns the updated state. The updated state then stores in the state container and replaces the old state. And then we have the subscription model to which component will subscribe and get the updated state.
+
+State management is one of the crucial tasks to handle in ReactJS. When the application grows and various components are introduced in our application, it will be harder to maintain the state consistency.
+
+So, for making state management easier, redux has been introduced.
+
+In the last segment, you learnt that useReducer is an alternative to the useStatete hook.
+
+In Redux, using the State container along with the reducer makes the state management quite handy.
+
+Always remember to wrap the store at the root level of the application so that it can be accessed from anywhere, similar to how we wrapped in index.js under the ReactDOM.render() because it is where the rendering took place.
+
+Provider makes the store accessible.
+
+In Redux, the entire state is maintained in a single place. The state is immutable in Redux; any changes to the state must be done by cloning the state object and then making modifications to it. Changes are made to the state by means of pure functions called reducers, which take in the existing state and the change action and produce a new state object.
+
+# Custom Hooks
+
+React allows you to build your own custom hook, and you can modify the state in your own way.
+
+The main reason for building the custom hook is that you can extract the component logic into the reusable function. Using this, you can dispatch the function which updates the component state that calls the function.
+
+Component Logic refers to a logic we can use again and again across components rather than repeating them.
+
+With Custom Hooks, We can extract the logic of function and make it reusable across the application. This will enable us to have more abstraction in our application.
