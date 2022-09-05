@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import UseContextApp from "./Additional/useContextApp";
+import Effects from './Additional/useEffect_useState';
 
 function App() {
   return (
     <div>
-      <UseContextApp/>
+      <Effects/>
     </div>  
   );
 }
