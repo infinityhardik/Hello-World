@@ -38,3 +38,5 @@ It is a useful tool to reflect changes automatically in the Browser upon saving 
   
 - But we can access the **File System** using NODE which cannot be accessed using DOM or the Window Object.
 - Hence We can Create, Read, Write, Update, Delete files using NODE.
+- Node.js relies heavily on Events > Also, we can create custom events.
+- Take care of Synchronous and Asynchronous Codes while developing the Server because it will affect the output.

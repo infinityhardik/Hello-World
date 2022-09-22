@@ -13,7 +13,7 @@ const server = http.createServer((req, res) => {
         // document.querySelectorAll('h1');
         // This will crash the Server because we cannot access the DOM or the Window Object using NODE
 
-        fs.readFile('/index.html', 'utf-8', (err, data) => {
+        fs.readFile('/staticWebApp.html', 'utf-8', (err, data) => {
             if (data) {
                 res.end(data);
             } else {
