@@ -3,7 +3,7 @@ const fs = require('fs');
 const port = 3000;
 
 const server = http.createServer((req, res) => {
-    if (req.url === '/') {
+    if (req.url === '') {
         res.writeHead(200, 'OK', { 'content-type': 'text/html' })
         // JSON Object to specify the Content Type
 
