@@ -1,0 +1,6 @@
+- JavaScript can be used on the client-side as well as on the server-side.
+- Node.js is a JavaScript runtime built on a V8 JavaScript engine.
+- The Just-In-Time compilation technique converts JavaScript code directly into binary form. Using the Just-In-Time (JIT) compilation technique, the JavaScript code gets directly compiled into the low-level machine code, which is in the binary form. This low-level machine code can be directly run on the machine without it being interpreted, thereby eliminating the need for an interpreter, and no intermediate code is generated. Thus, this is one of the correct options.
+- DOM (Document Object Model) manipulation can be achieved using the client-side JavaScript language only.Manipulating the DOM first requires the DOM (Document Object Model), which needs to be rendered on the client (browser). Thus, this can be achieved using the client-side JavaScript language.
+- Local file system management can be achieved using the Node.js language only. The management of the local file system requires you to interact with the file system locally. This cannot be done on the client-side due to security reasons. This is why it is done on the server-side using the Node.js language.
+- Thus, DOM cannot be managed using Node.js and Local File System cannot be managed by the client-side JavaScript language.
