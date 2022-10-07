@@ -11,6 +11,14 @@
 - **Modules** are individual JavaScript files containing code that pertains to a single concept, functionality, or library.
 - **Packages** may contain multiple modules or a single module, which are used to group files offering relevant tools.
 - **Dependencies** are Node.js modules used by an application or another module.
+  - _Types of Modules / Packages :_
+  1. **Custom modules/packages :** These modules/packages are created and defined by the user.
+     > You need not install a custom module. However, you need to use the require function to import a custom module by providing its path to start using it.
+  2. **Third-party modules/packages :** These modules/packages are provided by Node Package Manager. They have already been created by someone else for you.
+     > You need to install a third-party module via NPM and import the module using the require function while providing the name of the module as the ID to start using it.
+  3. **Core modules :** These modules are provided by Node by default; you need not define them.
+     > Also, these are not required to be installed prior to their usage. You can simply use the require function to import a core module to start using it.
+     > To view the list of all the core modules, you can use the following command : `console.log(require('module').builtinModules);`
 
 # Folder Structure
 
@@ -59,3 +67,43 @@
   - Routing involves routing different requests to different request handler methods, whether it is Node or any server-side/client-side programming. In other words, it is the mechanism that is used to route different requests to specific methods based on the route URL of the request method.
   - ‘/’ is the home page, index page, or default page.
   - Mapping of routes to the responses is called **routeResponseMap**.
+
+## fs Module
+
+- _fs_ stands for '**File System**'. This module provides the capability of local file management, which is not provided by the client-side JavaScript. The fs module offers APIs for interacting with the file system.
+- All the file system operations in Node.js follow synchronous as well as asynchronous forms :-
+  - The **asynchronous** form takes a completion **callback** as its last argument, which is invoked when the asynchronous file operation finishes its operation. The first argument of this completion callback is reserved for the exception, which is assigned the value **null** or **undefined** when the file operation is successful.
+  - The **synchronous** form is written inside the **try-catch** block, and if an error or exception occurs, it is handled by the **catch** block.
+- Common _fs_ module APIs :-
+  - Read Files = **fs.readFile( path, [options], callback )** > used to **asynchronously** read files on your computer.
+  - Append Files = **fs.appendFile( path, data, [options], callback )** > used to asynchronously append data into a file or create a file if it does not exist.
+  - Open Files = **fs.open( path, [ flags [ mode ] ], callback )** > used to asynchronously open the file if it already exists or create a new file and open it if it does not already exists.
+  - Write Files = **fs.writeFile( file, data, [options], callback )** > replaces the specified file and content if it exists. If the file does not exist, a new file containing the specified content is created. > When you use **writeFile** API inside the fs module, it **asynchronously** writes data to a given file. > When you use **writeFileSync** API inside the fs module, it **synchronously** writes the given data to a file. 
+  - Remove Files = **fs.unlink( path, callback )** > used to asynchronously remove a file.
+  - Rename Files = **fs.rename( oldPath, newPath, callback )** > asynchronously renames the file at oldPath to the pathname provided as newPath. If newPath already exists, it is overwritten. If there is a directory at newPath, an error is thrown instead.
+  - Make Directory = **fs.mkdir( path, [mode], callback )** > used to create a directory in the path provided, and along with it, we can set the permissions using the node.
+
+# MVC = Model View Controller
+
+- Our **application’s assets are the images, stylesheets and JavaScript** that work alongside the views(HTML files) on the client side.
+- To better organise the view part, you need to create a public folder at your project’s root directory, and move all your assets there. Inside the public folder, you need to create a folder each for images, css and js, and move each asset into its respective folder.
+- The view of the application resides in views and public folder.
+- As all the _routing code_ is present in main.js, it forms the **CONTROLLER** part of this project.
+
+# MVC Folder Structue :
+
+- ## serve_html
+
+  1. main.js
+  2. package.json
+  3. router.js
+
+  - ## views
+    1. index.html
+  - ## public
+    - ## images
+    - ## css
+    - ## js
+
+- **views** > This is the folder in which we should put HTML structures, CSS properties and their client-side JavaScript functions.
+- **public** > This is the folder in which we should also put public HTML structures, CSS properties, their client-side JavaScript functions and images that we are using statically in our application.
