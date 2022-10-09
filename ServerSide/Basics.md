@@ -131,3 +131,12 @@
 - Data stored in MongoDB documents are in key-value pair.
 - MongoDB documents are similar to JSON objects.
 - We don't have to define the type of value (array of objects, objects, string, number etc.) of a field in the MongoDB documents.
+
+# Mongoose
+
+- MongoDB is a schema-less NoSQL document database. It means you can store JSON documents in it, and the structure of these documents can vary as it is not enforced like SQL databases.
+- **Mongoose** is an **Object Document Modeling (ODM)** layer that sits on top of the Node.js MongoDB API. If you’re coming from an SQL background, then Mongoose is similar to an **Object Relational Mapping (ORM)**.
+- Everything in Mongoose starts with a Schema. Each schema maps to a MongoDB collection and defines the shape of the documents within that collection.
+- It has information about properties/field types of documents. Schemas can also store information about validation and default values, and whether a particular property is required. In simple words, they’re blueprints for documents.
+- A model is a class with which we construct documents.
+- 
