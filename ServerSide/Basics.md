@@ -139,4 +139,123 @@
 - Everything in Mongoose starts with a Schema. Each schema maps to a MongoDB collection and defines the shape of the documents within that collection.
 - It has information about properties/field types of documents. Schemas can also store information about validation and default values, and whether a particular property is required. In simple words, they’re blueprints for documents.
 - A model is a class with which we construct documents.
-- 
+- Mongoose Relationship Models :
+
+  - Types of associations :
+
+  1. One-to-One
+  2. One-to-Many
+  3. Many-to-Many
+
+  - Example of Associations :-
+
+  1. One-to-Many: When one entity is related to another entity with multiple values. For example, a person can have multiple contact details.
+  2. One-to-One: When one entity is related to another entity with only one value. For example, a person has only one primary bank account in a bank.
+  3. Many-to-Many: When multiple entities are related to multiple other entities. For example, multiple teachers can teach multiple students in a school.
+
+  - Data Models:
+
+  1. Reference Data Models (Normalisation) > In this model, an object A connects to the object B by reference to object B id or a unique identification field. Example :-
+
+  ```js
+  // SchoolAdmission
+  {
+  _id: "12345xyz",
+  enrollmentCode: "Sri130421"
+  }
+  // Child
+  {
+  _id: "sri123",
+  name: "Sristhi",
+  age: 4,
+  gender: “female"
+  }
+  ```
+
+  2. Embedded Data Models (Denormalisation) > In 'Embedded' data model, instead of using a reference, object A contains the whole object B, or object B is embedded inside object A. Example :-
+
+  ```js
+  // SchoolAdmission
+  {
+  _id: "12345xyz",
+  enrollmentCode: "Sri130421",
+  child:
+    {
+      _id: "sri123",
+      name: "Sristhi",
+      age: 4,
+      gender: "female"
+    }
+  }
+  ```
+
+- **Data access** considers how often data is read and written i.e. find the **read/write ratio**.
+- If the collections that we’re working is read more often than updated, i.e. there is a lot more reading than writing (a high read/write ratio), then we should embed the data.
+- The reason is that by embedding we only need one trip to the database per query while for referencing we need two trips. In each query, we save one trip to the database which makes the entire process way more effective.
+- For example, a blog post having about 7-10 Images would be a good candidate for embedding because once these Images are saved to the database they are not really updated.
+- On the other hand, if our data is updated a lot then we should consider referencing (normalising) the data. That’s because the database engine does more work to update and embed a document than a standalone document, our main goal is performance so we just use referencing for data model.
+- For example, each tutorial has many comments. Each time someone posts a comment, we need to update the corresponding tutorial document. The data can change all the time, so this is a great candidate for referencing.
+- The last criterion (**Data Cohesion**) is just a measure for how much the data is related to each other. If two collections intrinsically belong together then they should be embedded into one another.
+- In our example, all tutorials can have many images and every image intrinsically belongs to a tutorial. So images should be embedded into the tutorial document.
+- If we frequently need to query both collections, we should normalise the data into two separate collections however closely they are related.
+- Imagine that in our tutorial blog, we have a widget called recent images, and images could belong to separate tutorials. This means that we could query images on their own collections without necessarily querying for the tutorials.
+
+# Tips for Data Modelling
+
+- In **One-to-Many** relationship , we don’t have any standard or specific rule for all cases, it depends on the ways your application queries and updates data.
+- In **one-to-few** and **one-to-many** relationships, prefer embedding.
+- In **One-to-aLot** relationships, prefer referencing.
+- Use embedding when data is mostly read but rarely updated, and when two models belong intrinsically together.
+- Prefer referencing when data is updated a lot, and you need to frequently query a collection on its own.
+- Never allow arrays to grow indefinitely. Thus, prefer using **child referencing** for **one-to-many** relationships, and **parent referencing** for **One-to-aLot** relationships
+
+# Many-to-Many Relationship Model
+
+```js
+// Tutorial
+{
+  _id: "5db579f5faf1f8434098f123"
+  title: "Tut #1",
+  author: "rocky"
+  tags: [
+    {
+      name: "tagA",
+      slug: "tag-a"
+    },
+    {
+      name: "tagB",
+      slug: "tag-b"
+    }
+  ]
+}
+```
+
+```js
+// Tag
+{
+  _id: "5db579f5faf1f84340abf456"
+  name: "tagA",
+  slug: "tag-a"
+  tutorials: [
+    {
+      title: "Tut #1",
+      author: "rocky"
+    },
+    {
+      title: "Tut #2",
+      author: "prachi"
+    }
+  ]
+}
+
+```
+
+- Presently we’ve done **Two-way Referencing** where Tags and Tutorials are connected in both directions:
+
+  - In each tag, we keep references to all tutorials that are tagged.
+  - In each tutorial, we also keep references to its tags.
+
+- For embedded data models, you can see that we can get all the data about tutorial with its tags (or tag with its tutorials) at the same time, thus our application will need fewer queries. This results in increased performance.
+- But when the data becomes larger, duplicates are inevitable. Duplicates increase the risk for updating the document.
+- For example, if you want to change the name of tagB, you have to change not only the tag’s document but also find the tutorial that contains that tag and update the field.
+- Hence, with **Many-to-Many relationship**, we always use **data references** or **normalising**.
