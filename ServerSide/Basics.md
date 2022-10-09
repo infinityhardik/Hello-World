@@ -78,7 +78,7 @@
   - Read Files = **fs.readFile( path, [options], callback )** > used to **asynchronously** read files on your computer.
   - Append Files = **fs.appendFile( path, data, [options], callback )** > used to asynchronously append data into a file or create a file if it does not exist.
   - Open Files = **fs.open( path, [ flags [ mode ] ], callback )** > used to asynchronously open the file if it already exists or create a new file and open it if it does not already exists.
-  - Write Files = **fs.writeFile( file, data, [options], callback )** > replaces the specified file and content if it exists. If the file does not exist, a new file containing the specified content is created. > When you use **writeFile** API inside the fs module, it **asynchronously** writes data to a given file. > When you use **writeFileSync** API inside the fs module, it **synchronously** writes the given data to a file. 
+  - Write Files = **fs.writeFile( file, data, [options], callback )** > replaces the specified file and content if it exists. If the file does not exist, a new file containing the specified content is created. > When you use **writeFile** API inside the fs module, it **asynchronously** writes data to a given file. > When you use **writeFileSync** API inside the fs module, it **synchronously** writes the given data to a file.
   - Remove Files = **fs.unlink( path, callback )** > used to asynchronously remove a file.
   - Rename Files = **fs.rename( oldPath, newPath, callback )** > asynchronously renames the file at oldPath to the pathname provided as newPath. If newPath already exists, it is overwritten. If there is a directory at newPath, an error is thrown instead.
   - Make Directory = **fs.mkdir( path, [mode], callback )** > used to create a directory in the path provided, and along with it, we can set the permissions using the node.
@@ -107,3 +107,27 @@
 
 - **views** > This is the folder in which we should put HTML structures, CSS properties and their client-side JavaScript functions.
 - **public** > This is the folder in which we should also put public HTML structures, CSS properties, their client-side JavaScript functions and images that we are using statically in our application.
+
+# Data
+
+- **Data > Process > Information** = When raw data is processed, it becomes information, which is useful and meaningful. Ex : 12121995 > 12/12/1995.
+- The _file system_ is a traditional way of storing data.
+
+  - Disadvantages :-
+
+  1. Data redundancy > There can be multiple records of the same entity in a file system, which results in data duplication.
+  2. Data inconsistency
+  3. Difficulty in accessing data
+  4. Integrity and atomicity not achieved
+  5. Concurrent access not allowed
+  6. Lack of security
+
+- **Database** > To overcome the shortcomings of file systems, we use databases.
+- A database is an organised collection of meaningful and useful information that is stored and accessed through computers. In other words, it is a method that is used widely to _store, retrieve and manage data_.
+
+- A **relational database** means a collection of data items stored in a tabular (table) format with a predefined relationship between them.
+- In a **non-relational database**, data is stored in an unstructured format. Unlike relational models, there is no relation between the tables in a non-relational database.
+
+- Data stored in MongoDB documents are in key-value pair.
+- MongoDB documents are similar to JSON objects.
+- We don't have to define the type of value (array of objects, objects, string, number etc.) of a field in the MongoDB documents.
