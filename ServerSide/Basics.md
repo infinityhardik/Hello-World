@@ -259,3 +259,127 @@
 - But when the data becomes larger, duplicates are inevitable. Duplicates increase the risk for updating the document.
 - For example, if you want to change the name of tagB, you have to change not only the tag’s document but also find the tutorial that contains that tag and update the field.
 - Hence, with **Many-to-Many relationship**, we always use **data references** or **normalising**.
+
+# Express.js
+
+- A web framework is a pre-defined application structure and a library of development tools, to make building a web application easier and more consistent.
+
+  - A web framework is designed to do a lot of tedious tasks for us hence giving us a simple structure for customizing our app.
+  - A web framework like Express.js operates through functions considered to be middleware because they sit between HTTP interaction on the web and the Node.js platform.
+
+- Express.js is a Node.js Framework.
+- Any Express.js application has four key parts:
+
+  1. The require statement
+  2. Middleware
+  3. Routing
+  4. app.listen() to start the server
+
+- Middleware = one which sits between the request and the response.
+- Middleware is a general term applied to code that assists in listening for, analyzing, filtering and handling HTTP communication before data interacts with application logic.
+- Express.js stands between the HTTP requests and your application code.
+
+# Routing in Express.js
+
+- Routing means assigning functions to respond to users’ requests.
+- Express routers are basically **middleware** _(meaning they have access to the request and response objects and do lots of work for us. Hence codes written using Express.js is shorter and more readable than plain Node.js)_.
+- Syntax : app.VERB('path', callback…); Here, VERB can be either GET, POST, PUT, or DELETE.
+
+- Calling **next()** at the end of your function is necessary to alert Express.js that your code has completed.
+- The next() function, when called, moves control to the next middleware or route.
+- Not doing so leaves your request hanging. Middleware runs sequentially, so by not calling next, you’re blocking your code from continuing until completion.
+
+# Request Object
+
+- The request object contains information about the incoming request.
+- The most useful properties of request object are:
+
+  1. **request.params** holds all GET parameters
+  2. **request.body** stores POST form parameters
+  3. **request.query** property is used to extract the GET form data
+  4. **request.headers** hold key/value pairs of the request received by the server. Servers and clients make use of headers to communicate their compatibility and constraints.
+  5. **request.accepts(['json','html'])** holds an array of data formats and returns the the browser preferred format of data
+  6. **request.url** stores data about the URL of the request
+  7. **request.ip** holds the IP (Internet Protocol) address of the browser requesting for information.
+
+- A **query string** is text represented as key/value pairs in the URL following a **question mark(?)** after the hostname.
+- For example: http://localhost:3000?name=suven here, you are sending the name (key) paired with suven (value). This data can be extracted and used in the route handler.
+
+```js
+  const express = require('express');
+  const app = express();
+  const port = 3000;
+
+  app.get('/:name/:age', (request, response) => {
+    response.send(request.params);
+  });
+
+  //The colon before the parameters differentiates the route parameters from normal route path
+
+  //Binding the server to a port(3000)
+  app.listen(3000, () => console.log('express server
+  started at port 3000'));
+
+  // https://localhost:3000/suven/17
+```
+
+- The request.query property is used to extract the GET form data;
+
+```js
+  <!-- form.html -->
+  <!-- action specifies that form be handled on the same page -->
+  <form action='/' method='GET'>
+  <input type='text' name='name' placeholder='ur name'/>
+  <input type='email' name='email' placeholder='ur email'/>
+  <input type='submit'/>
+  </form>
+
+  // server side code for express-query example
+  // loading express
+  const express = require('express');
+  app = express();
+
+  //route serves both the form page and processes form data
+  app.get('/', (request, response)=>{
+  console.log(request.query);
+  response.sendFile(__dirname +'/form.html');
+  });
+  app.listen(3000,() => console.log('Express server started at port 3000'));
+
+// Run the code with node server.js, hit localhost:3000, and fill and submit the form in your browser. After submitting the form, the data you filled out gets logged to the console.
+```
+
+- There are multiple ways to send data from client to server:
+
+  - **query strings:** ?(symbol) is used to concat key=value pairs to the URL
+  - **URL parameters:** :(symbol) is used to concat
+
+- The **request.body** property contains key-value pairs of data submitted in the request body.
+- By default, it is undefined and is populated when we use a middleware called **body-parser**. Such as bodyParser.urlencoded() or bodyParser.json(). > The body-parser package, can handle many forms of data. This package is a middleware. It intercepts the raw body and parses it into a form that our application code can easily use.
+
+- We call app.use(...) before defining our route. The order matters. This will ensure that the body-parser will run before our route, which ensures that our route can then access the parsed HTTP POST body.
+
+- There is a special routing method, **app.all()**, used to load middleware functions at a path for all HTTP request methods.
+
+# Response Object
+
+- The methods on the response object (res) in the following table can send a response to the client, and terminate the request-response cycle. If none of these methods are called from a route handler, the client request will be left hanging.
+  1. res.download() : Prompt a file to be downloaded.
+  2. res.end() : End the response process.
+  3. res.json() : Send a JSON Response.
+  4. res.jsonp() : Send a JSON response with JSONP support.
+  5. res.redirect() : Redirect a request.
+  6. res.render() : Render a view template.
+  7. res.send() : Send a response of various types.
+  8. res.sendFile() : Send a file as an octet stream.
+  9. res.sendStatus() : Set the response status code and send its string representation as the response body.
+
+# CORS
+
+- If we send a fetch request to another website, it will probably fail.
+- Cross-origin requests are sent to another domain (even a subdomain) or protocol or port and require special headers from the remote side.
+- That policy is called **"CORS": Cross-Origin Resource Sharing**.
+- It is a mechanism to allow or restrict requested resources on a web server to be accessed from a different origin.
+- This policy is used to secure a certain web server from access by other website or domain. For example, only the allowed domains will be able to access hosted files in a server such as a stylesheet, image, or a script.
+- There is an HTTP header called origin in each HTTP request. It defines from where the domain request has originated. We can use header information to restrict or allow resources from our web server to protect them.
+
