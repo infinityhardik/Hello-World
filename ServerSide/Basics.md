@@ -383,3 +383,118 @@
 - This policy is used to secure a certain web server from access by other website or domain. For example, only the allowed domains will be able to access hosted files in a server such as a stylesheet, image, or a script.
 - There is an HTTP header called origin in each HTTP request. It defines from where the domain request has originated. We can use header information to restrict or allow resources from our web server to protect them.
 
+# Handling Form Data
+
+- The web’s main function is communication.
+- Basically, Express.js stores client data in two places:
+
+1. **request.query** (for GET request)
+2. **request.body** (for POST requests)
+
+- On the client side, it is ideal to use the POST method for form submission because most browsers place limits on the length of the query and additional data is lost.
+- request.body will not work without the body-parser middleware.
+- When sending HTML files as a response to the browser, one may get the following error: _TypeError: path must be absolute or specify root to res.sendFile_ : > Solution : **res.sendFile(\_\_dirname +'/index.html');**
+
+- Static files, like images, are files that clients download from the server. Static files, like images, are files that clients download from the server > Create a new directory, 'public' in your project structure > `app.use(express.static('public'));`
+
+  - Express looks up the files relative to the static directory. So, the name of the static directory is not a part of the URL.
+  - The root route is now set to your public directory. So, all the static files that you load will consider ‘public’ as root.
+
+# Cookies
+
+- Cookies are small text files that are sent by the server to the client as a piggy-backed attachment to the response.
+- Cookies are stored on the client side in the browser memory. Every time the user loads the website back, that is, hits the URL, this cookie is sent with the request. This helps keep track of user’s actions.
+- Every cookie object has an expiry time. It could range from as low as session\* time to a few years.
+
+  - Session time means that the cookie would live till you work on the site. As soon as you close the browser, the cookie is destroyed and cleared from the browser memory.
+  - **cookie-parser** is a middleware that parses cookies attached to the client request object.
+
+- A signed cookie is simply a signature attached to the cookie.
+- So, the cookie will still be visible to the client. However, it has a signature. So, the server side code can detect if the client modified the cookie or not.
+- If the signature does not match, then it will give an error.
+
+```js
+// Syntax to create a cookie object
+// cookies hold everything as key:value pairs
+app.get("/", (req, res) => {
+  res.cookie("edtech", "upgrad").send("cookie set"); //Sets edtech = upgrad
+});
+```
+
+```js
+// To check if the above cookie is set on the client side, that is, browser, run the following code:
+console.log(document.cookie);
+```
+
+```js
+//Creating cookies with expiration time.
+//Just add property ‘expire’ along with the expiry time to the cookie
+//For example,
+//Expires after 360000 ms from the time it is set.
+res.cookie(name, "upgrad", { expire: 360000 + Date.now() });
+```
+
+```js
+//Another way to set expiration time is using ‘maxAge’ property. Using this property, you can provide relative time instead of absolute time
+//This cookie also expires after 360000 ms from the time it is set.
+res.cookie(name, "value", { maxAge: 360000 });
+```
+
+```js
+// Deleting Existing Cookies
+// To delete a cookie, use the clearCookie function
+app.get("/clear_cookie_upgrad", function (req, res) {
+  res.clearCookie("upgrad");
+  res.send("cookie upgrad cleared");
+});
+```
+
+```js
+// To create a signed cookie code syntax, use the following code:
+res.cookie("name", "value", { signed: true });
+
+// Note: Instead of app.use(cookieParser()), use app.use(express.cookieParser(‘SomePrivateKey'));
+
+// To access a signed cookie, use the signedCookies object of req (that is, request) object:
+req.signedCookies["name"];
+```
+
+# Sessions
+
+- HTTP is stateless; so, every request is unique. Although two or more consecutive requests could come in from the same client browser. So, in order to associate a request to any other request, you need a way to store user data between HTTP requests.
+- Cookies and URL parameters are both suitable ways to exchange data between the client and the server. But, they are both readable and stored on the client side. You want something that can be stored and managed on the server side only. Sessions solve exactly this problem. You assign the client an ID and it makes all further requests using that ID. The information associated with the client is stored on the server linked to this ID.
+- The session middleware handles all the things, that is, creating the session, setting the session cookie and creating the session object in request object.
+- Whenever you make a request from the same client again, you will have their session information stored with you (given that the server was not restarted).
+
+# Error Handling
+
+- Error handling in Express.js is done by writing a regular middleware function.
+- Error handling middleware is defined in the same way as other middleware functions, except that error-handling functions MUST have four arguments instead of three – **err, req, res and next**.
+- For error handling, you use the next(err) function. A call to next(err) function skips all middlewares and matches you to the next error handler for that route. Let’s understand this through an example.
+
+```js
+var express = require("express");
+var app = express();
+app.get("/", function (req, res) {
+  //Create an error object and pass it to the next function
+  var err = new Error("dash-dash went wrong");
+  next(err);
+});
+/*
+ * other route handlers and middleware here
+ */
+//An error handling function or middleware
+app.use(function (err, req, res, next) {
+  res.status(500);
+  res.send("dash-dash went wrong.");
+});
+app.listen(3000);
+```
+
+```js
+// For example, to send a response on any error, you can use the following code:
+app.use(function (err, req, res, next) {
+  console.error(err.stack);
+  res.status(500).send("Something broke!");
+});
+```
