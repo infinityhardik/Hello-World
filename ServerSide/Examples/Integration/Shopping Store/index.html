@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shopping Store</title>
+  </head>
+  <body>
+    <h2>Add New Item to Store</h2>
+    <form action="/add" method="POST" enctype="multipart/form-data">
+      <input type="text" name="item_name" placeholder="Item Name" required />
+      <textarea
+        tye="text"
+        name="item_desc"
+        placeholder="Write Description"
+      ></textarea>
+      <input type="file" name="item_image" />
+      <button type="submit">Add Item</button>
+    </form>
+    <h2>Search Item in the Store</h2>
+    <form
+      action="/item"
+      method="GET"
+      enctype="multipart/form-data"
+      id="get_item"
+    >
+      <input type="text" name="item_name" placeholder="Item Name" required />
+      <button type="submit">Search Item</button>
+    </form>
+    <div id="show_data">
+      <div>
+        Item Name:
+        <div class="item-name"></div>
+      </div>
+      <div>
+        Item Description:
+        <div class="item-desc"></div>
+      </div>
+      <div>
+        Item Image:
+        <div class="item-img"></div>
+      </div>
+    </div>
+
+    <script>
+      document
+        .querySelector("#get_item")
+        .addEventListener("submit", async (e) => {
+          e.preventDefault();
+          const showData = document.querySelector("#show_data");
+          const itemName = document
+            .querySelector('#get_item [name="item_name"]')
+            .value.trim();
+          const res = await fetch(`/item?item_name=${itemName}`);
+          if (res.ok) {
+            await res.json().then((data) => {
+              showData.querySelector(".item-name").innerText = data.item_name;
+              showData.querySelector(".item-desc").innerText = data.item_desc;
+              showData.querySelector(
+                ".item-img"
+              ).innerHTML = `<img src="data:image/png;base64,${data.image}" width="300" height="400px" style="object-fit: cover;"/>`;
+            });
+          } else {
+            showData.querySelector(".item-name").innerText =
+              "Error: Unknown item!";
+          }
+        });
+    </script>
+  </body>
+</html>

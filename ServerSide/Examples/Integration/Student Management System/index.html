@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student Management System</title>
+  </head>
+  <body>
+    <h2>Search Student</h2>
+    <form method="GET" action="/student" id="search_stud">
+      <input
+        type="number"
+        class="roll_no"
+        name="roll_no"
+        placeholder="Roll No."
+      />
+      <button type="submit">Search</button>
+    </form>
+    <h2>Add Student</h2>
+    <form method="POST" action="/add" id="add_stud">
+      <input type="text" name="stud_name" placeholder="Name" />
+      <input type="number" name="roll_no" placeholder="Roll No" />
+      <button type="submit" name="submit">Add New Student</button>
+    </form>
+    <div id="status">Status:<span></span></div>
+
+    <script>
+      document
+        .querySelector("#search_stud")
+        .addEventListener("submit", async (e) => {
+          e.stopPropagation();
+          e.preventDefault();
+          //let formData = new FormData(this);
+          let searchRollNo = document.querySelector(".roll_no");
+          await fetch(`/students/${searchRollNo.value.trim()}`).then((res) =>
+            console.log(res)
+          );
+        });
+
+      document
+        .querySelector("#add_stud")
+        .addEventListener("submit", async function (e) {
+          e.preventDefault();
+          let formData = {
+            stud_name: document.querySelector(`#add_stud [name="stud_name"]`)
+              .value,
+            roll_no: document.querySelector(`#add_stud [name="roll_no"]`).value,
+          };
+          let options = {
+            method: "POST",
+            body: JSON.stringify(formData),
+            headers: {
+              "Content-Type": "application/json",
+            },
+          };
+          const res = await fetch(`/add`, options);
+          if (res.ok) {
+            document.querySelector("#status span").innerHTML =
+              "New Student Added";
+          } else {
+            document.querySelector("#status span").innerHTML =
+              "Error While Adding!";
+          }
+          console.log(res);
+        });
+    </script>
+  </body>
+</html>
