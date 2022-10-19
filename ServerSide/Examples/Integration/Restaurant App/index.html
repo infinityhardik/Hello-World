@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Restaurant Menu</title>
+  </head>
+  <body>
+    <h2>Search Food</h2>
+    <form method="GET" action="/api/restaurant" id="search_menu">
+      <input
+        type="text"
+        class="foodItem"
+        name="foodItem"
+        placeholder="Menu Item..."
+      />
+      <button type="submit">Search</button>
+    </form>
+    <h2>All Items</h2>
+    <form method="GET" action="/api/restaurant" id="all_items">
+      <button type="submit" name="submit">Get All Menu</button>
+    </form>
+    <!-- <div id="status">Status:<span></span></div> -->
+
+    <script>
+      document
+        .querySelector("#search_menu")
+        .addEventListener("submit", async (e) => {
+          e.stopPropagation();
+          e.preventDefault();
+          //let formData = new FormData(this);
+          let searchMenu = document.querySelector(".foodItem");
+          await fetch(`/api/restaurant/${searchMenu.value.trim()}`).then(res => res.json()).then(data => console.log(data));
+        });
+
+      document
+        .querySelector("#all_items")
+        .addEventListener("submit", async function (e) {
+          e.stopPropagation();
+          e.preventDefault();
+          await fetch(`/api/restaurant`).then(res => res.json()).then(data => console.log(data));
+        });
+    </script>
+  </body>
+</html>
